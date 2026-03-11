@@ -1,22 +1,22 @@
-# Bharat-Mitra: Ultimate Simple Regional AI (V5.0)
+# Bharat-Mitra: Your Regional Heritage Guide
 
-Bharat-Mitra is a deep, yet simple multi-lingual chatbot designed to provide high-tier intelligence across Indian regional languages in a way that anyone can understand. 
+Bharat-Mitra is a premium, beautifully simple guide designed to help you explore the richness of Indian regional knowledge. Every word and interaction is built to be understandable, warm, and deeply respectful of our heritage.
 
 ## 🚀 Live Demo
 **[clil-bharat-mitra.vercel.app](https://clil-bharat-mitra.vercel.app)**
 
-## ✨ V5.0 Simple Pro Features
-- **New 3D Branding**: A professional futuristic logo integrated into the interface and favicon.
-- **Simple Regional Wisdom**: Deep knowledge about ISRO, Indian Heritage, and Future Tech explained in very simple, easy-to-understand language.
-- **Total Interface Localization**: The entire dashboard (sidebar, header, tools) translates instantly to your chosen language.
-- **Smart Detection**: Instantly detects and switches to Hindi, Gujarati, Marathi, Tamil, or English.
-- **Zero Confusion**: Clean, minimalist UI designed for a smooth, professional experience without any clutter.
+## ✨ Premium Features
+- **Simple Regional Wisdom**: Learn about Indian Heritage, Science, and Language in words that everyone can understand.
+- **Pure Interface**: A clean, distraction-free dashboard that stays out of your way and focuses on what matters—knowledge.
+- **Total Local Experience**: The entire platform switches instantly to Hindi, Gujarati, Marathi, or Tamil, including all menus and guides.
+- **Human Touch**: Removed all technical labels and versioning for a warm, service-oriented experience.
+- **Zero Configuration**: Just speak in your native tongue, and Bharat-Mitra will guide you instantly.
 
-## 🛠️ Technology Stack
-- **Framework**: React.js 19 + Vite
-- **Logic**: Custom V5 Simple-NLP Engine
-- **Branding**: 3D-AI Generated Visual Identity
-- **Deployment**: Vercel Progressive Deployment
+## 🛠️ Technology Behind the Simplicity
+- **Foundation**: React.js 19 + Vite
+- **Preservation Logic**: Custom simple-language regional mapping
+- **Visual Identity**: High-end minimalist design with regional accents
+- **Release**: Definitive Professional Edition
 
 ---
-*Bharat-Mitra V5.0 | Simple Words. Deep Wisdom.*
+*Bharat-Mitra | Simply Preserving Our Heritage.*

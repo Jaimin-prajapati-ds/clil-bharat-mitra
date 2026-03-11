@@ -1,6 +1,6 @@
 /**
- * Bharat-Mitra NLP Engine V5 - Simple & Deep Regional Intelligence
- * Refined for maximum clarity and simplified language.
+ * Bharat-Mitra - Simple & Premium Regional Guide
+ * Human-centric, understandable, and deeply respectful of regional languages.
  */
 
 export type Language = 'hi' | 'gu' | 'mr' | 'ta' | 'en' | 'auto';
@@ -16,74 +16,74 @@ export const langLabels: Record<string, string> = {
 
 export const uiTranslations: Record<Exclude<Language, 'auto'>, Record<string, string>> = {
   en: {
-    title: "Bharat-Mitra AI",
-    subtitle: "Simple & Powerful Regional Assistant",
-    sidebarTitle: "Knowledge Box",
-    sidebarResource1: "Cultural Facts",
-    sidebarResource2: "Science Info",
+    title: "Bharat-Mitra",
+    subtitle: "Your Regional Knowledge Guide",
+    sidebarTitle: "Discovery",
+    sidebarResource1: "Heritage & Places",
+    sidebarResource2: "Science & Nature",
     sidebarResource3: "Language Help",
-    placeholder: "Ask anything in simple words...",
-    clearChat: "Clear Session",
-    typing: "Thinking simply...",
-    intelligence: "English Mode",
+    placeholder: "How can I help you today?",
+    clearChat: "Start Over",
+    typing: "Searching for you...",
+    intelligence: "English Guide",
     copy: "Copy text",
-    summary: "Advanced AI that speaks your language in a simple way."
+    summary: "A simple and beautiful way to explore regional knowledge."
   },
   hi: {
-    title: "भारत-मित्र एआई",
-    subtitle: "सरल और शक्तिशाली क्षेत्रीय सहायक",
-    sidebarTitle: "ज्ञान का पिटारा",
-    sidebarResource1: "सांस्कृतिक तथ्य",
-    sidebarResource2: "विज्ञान की जानकारी",
+    title: "भारत-मित्र",
+    subtitle: "आपका क्षेत्रीय ज्ञान मार्गदर्शक",
+    sidebarTitle: "खोज",
+    sidebarResource1: "विरासत और स्थान",
+    sidebarResource2: "विज्ञान और प्रकृति",
     sidebarResource3: "भाषा सहायता",
-    placeholder: "सरल शब्दों में कुछ भी पूछें...",
-    clearChat: "चैट साफ़ करें",
-    typing: "सोच रहा हूँ...",
-    intelligence: "हिंदी मोड",
+    placeholder: "आज मैं आपकी कैसे मदद कर सकता हूँ?",
+    clearChat: "शुरुआत करें",
+    typing: "आपके लिए खोज रहा हूँ...",
+    intelligence: "हिंदी मार्गदर्शक",
     copy: "कॉपी करें",
-    summary: "उन्नत एआई जो आपकी भाषा को सरल तरीके से बोलता है।"
+    summary: "क्षेत्रीय ज्ञान को खोजने का एक सरल और सुंदर तरीका।"
   },
   gu: {
-    title: "ભારત-મિત્ર AI",
-    subtitle: "સરળ અને શક્તિશાળી પ્રાદેશિક સહાયક",
-    sidebarTitle: "જ્ઞાનની પેટી",
-    sidebarResource1: "સાંસ્કૃતિક તથ્યો",
-    sidebarResource2: "વિજ્ઞાનની માહિતી",
+    title: "ભારત-મિત્ર",
+    subtitle: "તમારા પ્રાદેશિક જ્ઞાન માર્ગદર્શક",
+    sidebarTitle: "શોધ",
+    sidebarResource1: "વારસો અને સ્થાનો",
+    sidebarResource2: "વિજ્ઞાન અને પ્રકૃતિ",
     sidebarResource3: "ભાષા સહાય",
-    placeholder: "સરળ શબ્દોમાં કંઈપણ પૂછો...",
-    clearChat: "ચેટ સાફ કરો",
-    typing: "વિચારી રહ્યો છું...",
-    intelligence: "ગુજરાતી મોડ",
+    placeholder: "હું આજે તમારી કેવી રીતે મદદ કરી શકું?",
+    clearChat: "ફરી શરૂ કરો",
+    typing: "તમારા માટે શોધી રહ્યો છું...",
+    intelligence: "ગુજરાતી માર્ગદર્શક",
     copy: "નકલ કરો",
-    summary: "અદ્યતન AI જે તમારી ભાષાને સરળ રીતે બોલે છે."
+    summary: "પ્રાદેશિક જ્ઞાન મેળવવાની એક સરળ અને સુંદર રીત."
   },
   mr: {
-    title: "भारत-मित्र एआय",
-    subtitle: "सोपा आणि शक्तिशाली प्रादेशिक सहाय्यक",
-    sidebarTitle: "ज्ञान पेटी",
-    sidebarResource1: "सांस्कृतिक तथ्ये",
-    sidebarResource2: "विज्ञानाची माहिती",
+    title: "भारत-मित्र",
+    subtitle: "तुमचा प्रादेशिक ज्ञान मार्गदर्शक",
+    sidebarTitle: "शोध",
+    sidebarResource1: "वारसा आणि ठिकाणे",
+    sidebarResource2: "विज्ञान आणि निसर्ग",
     sidebarResource3: "भाषा मदत",
-    placeholder: "सोप्या शब्दात काहीही विचारा...",
-    clearChat: "चॅट साफ करा",
-    typing: "विचार करत आहे...",
-    intelligence: "मराठी मोड",
+    placeholder: "मी आज तुम्हाला कशी मदत करू शकतो?",
+    clearChat: "पुन्हा सुरुवात करा",
+    typing: "तुमच्यासाठी शोधत आहे...",
+    intelligence: "मराठी मार्गदर्शक",
     copy: "कॉपी करा",
-    summary: "प्रगत AI जे तुमची भाषा सोप्या पद्धतीने बोलते."
+    summary: "प्रादेशिक ज्ञान मिळवण्याचा एक सोपा आणि सुंदर मार्ग."
   },
   ta: {
-    title: "பாரத-மித்ரா AI",
-    subtitle: "எளிமையான மற்றும் சக்திவாய்ந்த உதவியாளர்",
-    sidebarTitle: "அறிவுப் பெட்டி",
-    sidebarResource1: "கலாச்சார உண்மைகள்",
-    sidebarResource2: "அறிவியல் தகவல்",
+    title: "பாரத-மித்ரா",
+    subtitle: "உங்கள் பிராந்திய அறிவு வழிகாட்டி",
+    sidebarTitle: "கண்டுபிடிப்பு",
+    sidebarResource1: "பாரம்பரியம் & இடங்கள்",
+    sidebarResource2: "அறிவியல் & இயற்கை",
     sidebarResource3: "மொழி உதவி",
-    placeholder: "எளிமையான சொற்களில் எதையும் கேளுங்கள்...",
-    clearChat: "அமர்வை அழி",
-    typing: "யோசிக்கிறேன்...",
-    intelligence: "தமிழ் பயன்முறை",
+    placeholder: "நான் இன்று உங்களுக்கு எப்படி உதவ முடியும்?",
+    clearChat: "மீண்டும் தொடங்கு",
+    typing: "உங்களுக்காகத் தேடுகிறேன்...",
+    intelligence: "தமிழ் வழிகாட்டி",
     copy: "நகலெடு",
-    summary: "உங்கள் மொழியை எளிமையான முறையில் பேசும் மேம்பட்ட AI."
+    summary: "பிராந்திய அறிவை ஆராய ஒரு எளிய மற்றும் அழகான வழி."
   }
 };
 
@@ -107,47 +107,47 @@ interface ResponseSet {
 }
 
 const responses: ResponseSet = {
-  intro: {
-    en: "### Namaste! I am Bharat-Mitra\nI can help you with many things in a **simple way**:\n- **General Knowledge**: Facts about India and the world.\n- **Science**: Simple explanations of how things work.\n- **Language**: Moving between your native tongue and English.\n\nWhat do you want to talk about?",
-    hi: "### नमस्ते! मैं भारत-मित्र हूँ\nमैं आपकी बहुत सी चीजों में **सरल तरीके** से मदद कर सकता हूँ:\n- **सामान्य ज्ञान**: भारत और दुनिया के बारे में तथ्य।\n- **विज्ञान**: चीजें कैसे काम करती हैं, इसका सरल विवरण।\n- **भाषा**: अपनी मातृभाषा और अंग्रेजी के बीच अनुवाद।\n\nआप किस बारे में बात करना चाहते हैं?",
-    gu: "### નમસ્તે! હું ભારત-મિત્ર છું\nહું તમને ઘણી બાબતોમાં **સરળ રીતે** મદદ કરી શકું છું:\n- **સામાન્ય જ્ઞાન**: ભારત અને વિશ્વ વિશેના તથ્યો.\n- **વિજ્ઞાન**: વસ્તુઓ કેવી રીતે કામ કરે છે તેની સરળ સમજૂતી.\n- **ભાષા**: તમારી માતૃભાષા અને અંગ્રેજી વચ્ચે અનુવાદ.\n\nતમે શેના વિશે વાત કરવા માંગો છો?",
-    mr: "### नमस्कार! मी भारत-मित्र आहे\nमी तुम्हाला अनेक गोष्टींमध्ये **सोप्या पद्धतीने** मदत करू शकतो:\n- **सामान्य ज्ञान**: भारत आणि जगाबद्दलची तथ्ये.\n- **विज्ञान**: गोष्टी कशा काम करतात याचे सोपे स्पष्टीकरण.\n- **भाषा**: तुमची मातृभाषा आणि इंग्रजीमधील भाषांतर.\n\nतुम्हाला कशाबद्दल बोलायचे आहे?",
-    ta: "### வணக்கம்! நான் பாரத-மித்ரா\nநான் உங்களுக்கு பல விஷயங்களில் **எளிமையான முறையில்** உதவ முடியும்:\n- **பொது அறிவு**: இந்தியா மற்றும் உலகத்தைப் பற்றிய உண்மைகள்.\n- **அறிவியல்**: விஷயங்கள் எவ்வாறு செயல்படுகின்றன என்பதற்கான எளிய விளக்கங்கள்.\n- **மொழி**: உங்கள் தாய்மொழிக்கும் ஆங்கிலத்திற்கும் இடையே மொழிபெயர்ப்பு.\n\nநீங்கள் எதைப் பற்றி பேச விரும்புகிறீர்கள்?"
+  hello: {
+    en: "### Namaste! I am Bharat-Mitra\nI am here to help you learn about India's regional beauty and knowledge in a **simple way**. I can assist with:\n- **Linguistic Help**: Understanding words and phrases.\n- **Our Heritage**: Learning about our festivals and history.\n- **General Discovery**: Simple facts about science and the world around us.\n\nWhat would you like to talk about?",
+    hi: "### नमस्ते! मैं भारत-मित्र हूँ\nमैं यहाँ भारत की क्षेत्रीय सुंदरता और ज्ञान के बारे में **सरल तरीके** से सीखने में आपकी मदद करने के लिए हूँ। मैं आपको निम्न में सहायता दे सकता हूँ:\n- **भाषाई सहायता**: शब्दों और वाक्यों को समझना।\n- **हमारी विरासत**: हमारे त्यौहारों और इतिहास के बारे में जानना।\n- **सामान्य खोज**: विज्ञान और हमारे आसपास की दुनिया के बारे में सरल तथ्य।\n\nआप किस बारे में बात करना चाहते हैं?",
+    gu: "### નમસ્તે! હું ભારત-મિત્ર છું\nહું અહીં ભારતની પ્રાદેશિક સુંદરતા અને જ્ઞાન વિશે **સરળ રીતે** શીખવામાં તમારી મદદ કરવા માટે છું. હું તમને નીચેની બાબતોમાં મદદ કરી શકું છું:\n- **ભાષાકીય મદદ**: શબ્દો અને વાક્યો સમજવા.\n- **આપણો વારસો**: આપણા તહેવારો અને ઇતિહાસ વિશે જાણવું.\n- **સામાન્ય શોધ**: વિજ્ઞાન અને આપણી આસપાસની દુનિયા વિશેના સરળ તથ્યો.\n\nતમે શેના વિશે વાત કરવા માંગો છો?",
+    mr: "### नमस्कार! मी भारत-मित्र आहे\nमी येथे भारताचे प्रादेशिक सौंदर्य आणि ज्ञान **सोप्या पद्धतीने** शिकण्यास मदत करण्यासाठी आहे. मी तुम्हाला खालील गोष्टींमध्ये मदत करू शकतो:\n- **भाषिक मदत**: शब्द आणि वाक्ये समजून घेणे.\n- **आपला वारसा**: आमचे सण आणि इतिहास याबद्दल जाणून घेणे.\n- **सामान्य शोध**: विज्ञान आणि आपल्या सभोवतालच्या जगाबद्दल सोपी तथ्ये.\n\nतुम्हाला कशाबद्दल बोलायचे आहे?",
+    ta: "### வணக்கம்! நான் பாரத-மித்ரா\nஇந்தியாவின் பிராந்திய அழகு மற்றும் அறிவை **எளிமையான முறையில்** அறிய உங்களுக்கு உதவ நான் இங்கு இருக்கிறேன். நான் உங்களுக்கு உதவ முடியும்:\n- **மொழி உதவி**: சொற்கள் மற்றும் வாக்கியங்களைப் புரிந்துகொள்ளுதல்.\n- **நமது பாரம்பரியம்**: நமது பண்டிகைகள் மற்றும் வரலாறு பற்றி அறிதல்.\n- **பொதுவான கண்டுபிடிப்பு**: அறிவியல் மற்றும் நம்மைச் சுற்றியுள்ள உலகம் பற்றிய எளிய உண்மைகள்.\n\nநீங்கள் எதைப் பற்றி பேச விரும்புகிறீர்கள்?"
   },
-  isro: {
-    en: "### About ISRO\nISRO is India's space team. They do amazing things like sending rockets to the Moon and Mars.\n- **Moon Mission**: India reached the South Pole of the moon first.\n- **Mars Mission**: India reached Mars in the very first try.\nISRO makes every Indian proud!",
-    hi: "### इसरो (ISRO) के बारे में\nइसरो भारत की अंतरिक्ष टीम है। वे चंद्रमा और मंगल पर रॉकेट भेजने जैसे अद्भुत काम करते हैं।\n- **चंद्रयान**: भारत चंद्रमा के दक्षिणी ध्रुव पर पहुंचने वाला पहला देश बना।\n- **मंगलयान**: भारत पहले ही प्रयास में मंगल पर पहुंच गया।\nइसरो हर भारतीय को गौरवान्वित करता है!",
-    gu: "### ISRO વિશે\nISRO ભારતની અંતરિક્ષ ટીમ છે. તેઓ ચંદ્ર અને મંગળ પર રોકેટ મોકલવા જેવા અદ્ભુત કામો કરે છે.\n- **ચંદ્રયાન**: ભારત ચંદ્રના દક્ષિણ ધ્રુવ પર પહોંચનાર પ્રથમ દેશ બન્યો.\n- **મંગળયાન**: ભારત તેના પ્રથમ પ્રયાસમાં જ મંગળ પર પહોંચી ગયું.\nISRO દરેક ભારતીયને ગૌરવ અપાવે છે!",
-    mr: "### इस्रो (ISRO) बद्दल\nइस्रो ही भारताची अंतराळ टीम आहे. ते चंद्र आणि मंगळावर रॉकेट पाठवण्यासारखी आश्चर्यकारक कामे करतात.\n- **चांद्रयान**: चंद्राच्या दक्षिण ध्रुवावर पोहोचणारा भारत पहिला देश ठरला.\n- **मंगलयान**: पहिल्याच प्रयत्नात भारत मंगळावर पोहोचला.\nइस्रो प्रत्येक भारतीयाचा अभिमान वाढवते!",
-    ta: "### ISRO பற்றி\nISRO என்பது இந்தியாவின் விண்வெளி குழு. அவர்கள் நிலவு மற்றும் செவ்வாய் கிரகத்திற்கு ராக்கெட்டுகளை அனுப்புவது போன்ற அற்புதமான காரியங்களைச் செய்கிறார்கள்.\n- **நிலவு பயணம்**: நிலவின் தென் துருவத்தை முதலில் அடைந்த நாடு இந்தியா.\n- **செவ்வாய் பயணம்**: இந்தியா முதல் முயற்சியிலேயே செவ்வாய் கிரகத்தை அடைந்தது.\nISRO ஒவ்வொரு இந்தியரையும் பெருமைப்படுத்துகிறது!"
+  places: {
+    en: "### Beautiful India: Our Heritage\nIndia has so many wonderful places to see:\n- **Temples of South**: Famous for beautiful stone carvings.\n- **Himalayas**: The great mountains in the north.\n- **Deserts & Greeneries**: From the sands of Rajasthan to the forests of Kerala.\nOur history lives in every corner!",
+    hi: "### सुंदर भारत: हमारी विरासत\nभारत में देखने के लिए बहुत सारे अद्भुत स्थान हैं:\n- **दक्षिण के मंदिर**: सुंदर पत्थर की नक्काशी के लिए प्रसिद्ध।\n- **हिमालय**: उत्तर के महान पर्वत।\n- **रेगिस्तान और हरियाली**: राजस्थान की रेत से लेकर केरल के जंगलों तक।\nहमारा इतिहास हर कोने में बसता है!",
+    gu: "### સુંદર ભારત: આપણો વારો\nભારતમાં જોવા માટે ઘણા સુંદર સ્થળો છે:\n- **દક્ષિણના મંદિરો**: પથ્થરની સુંદર કોતરણી માટે પ્રખ્યાત.\n- **હિમાલય**: ઉત્તરના મહાન પર્વતો.\n- **રણ અને હરિયાળી**: રાજસ્થાનની રેતીથી લઈને કેરળના જંગલો સુધી.\nઆપણો ઇતિહાસ દરેક ખૂણે જીવે છે!",
+    mr: "### सुंदर भारत: आपला वारसा\nभारतात पाहण्यासारखी अनेक सुंदर ठिकाणे आहेत:\n- **दक्षिणेतील मंदिरे**: दगडांवरील सुंदर कोरीव कामासाठी प्रसिद्ध.\n- **हिमालय**: उत्तरेकडील महान पर्वत.\n- **वाळवंट आणि हिरवळ**: राजस्थानच्या वाळूपासून केरळच्या जंगलांपर्यंत.\nआमचा इतिहास प्रत्येक कोपऱ्यात जिवंत आहे!",
+    ta: "### அழகான இந்தியா: நமது பாரம்பரியம்\nஇந்தியாவில் பார்க்க பல அற்புதமான இடங்கள் உள்ளன:\n- **தென்னிந்திய கோவில்கள்**: கற்கதுக்குகளுக்கு பெயர் பெற்றது.\n- **இமயமலை**: வடக்கில் உள்ள மிகப்பெரிய மலைகள்.\n- **பாலைவனங்கள் & பசுமை**: ராஜஸ்தானின் மணல் முதல் கேரளாவின் காடுகள் வரை.\nநமது வரலாறு ஒவ்வொரு மூலையிலும் வாழ்கிறது!"
   },
-  culture_simple: {
-    en: "### Indian Festivals\nIndia is a land of many festivals. Each region has its own beauty:\n- **Diwali**: The festival of lights.\n- **Holi**: The festival of colors.\n- **Pongal/Bihu/Navratri**: Celebrating nature and harvests.\nThese festivals bring everyone together!",
-    hi: "### भारतीय त्यौहार\nभारत कई त्यौहारों की भूमि है। हर क्षेत्र की अपनी सुंदरता है:\n- **दीवाली**: रोशनी का त्यौहार।\n- **होली**: रंगों का त्यौहार।\n- **पोंगल/बिहू/नवरात्रि**: प्रकृति और फसल का उत्सव।\nये त्यौहार सबको एक साथ लाते हैं!",
-    gu: "### ભારતીય તહેવારો\nભારત અનેક તહેવારોની ભૂમિ છે. દરેક પ્રદેશની પોતાની સુંદરતા છે:\n- **દિવાળી**: રોશનીનો તહેવાર.\n- **હોળી**: રંગોનો તહેવાર.\n- **પોંગલ/બિહુ/નવરાત્રી**: પ્રકૃતિ અને લણણીની ઉજવણી.\nઆ તહેવારો સૌને સાથે લાવે છે!",
-    mr: "### भारतीय सण\nभारत ही अनेक सणांची भूमी आहे. प्रत्येक प्रदेशाचे स्वतःचे सौंदर्य आहे:\n- **दिवाळी**: दिव्यांचा सण.\n- **होळी**: रंगांचा सण.\n- **पोंगल/बिहू/नवरात्री**: निसर्ग आणि पिकांचा उत्सव.\nहे सण सर्वांना एकत्र आणतात!",
-    ta: "### இந்திய பண்டிகைகள்\nஇந்தியா பல பண்டிகைகளின் நிலம். ஒவ்வொரு பிராந்தியத்திற்கும் அதன் சொந்த அழகு உண்டு:\n- **தீபாவளி**: ஒளி திருவிழா.\n- **ஹோலி**: வண்ணங்களின் திருவிழா.\n- **பொங்கல்/பிஹு/நவராத்திரி**: இயற்கை மற்றும் அறுவடையை கொண்டாடுதல்.\nஇந்த பண்டிகைகள் அனைவரையும் ஒன்றிணைக்கின்றன!"
+  science: {
+    en: "### Simple Science: Why things fall?\nEverything falls to the ground because of **Gravity**. Built by nature, it acts like a giant magnet pulling everything toward the center of the Earth. \n\nWithout it, everything would float away into space!",
+    hi: "### सरल विज्ञान: चीजें नीचे क्यों गिरती हैं?\n**गुरुत्वाकर्षण** के कारण हर चीज जमीन पर गिरती है। प्रकृति द्वारा निर्मित, यह एक विशाल चुंबक की तरह कार्य करता है जो सब कुछ पृथ्वी के केंद्र की ओर खींचता है।\n\nइसके बिना, सब कुछ उड़कर अंतरिक्ष में चला जाता!",
+    gu: "### સરળ વિજ્ઞાન: વસ્તુઓ કેમ નીચે પડે છે?\n**ગુરુત્વાકર્ષણ** ને કારણે દરેક વસ્તુ જમીન પર પડે છે. કુદરત દ્વારા રચાયેલ, તે એક વિશાળ ચુંબક જેવું કામ કરે છે જે પૃથ્વીના કેન્દ્ર તરફ બધું ખેંચે છે.\n\nતેના વગર, બધું જ અવકાશમાં ઊડી જાય!",
+    mr: "### साधे विज्ञान: गोष्टी खाली का पडतात?\n**गुरुत्वाकर्षणामुळे** प्रत्येक गोष्ट जमिनीवर पडते. निसर्गाद्वारे निर्मित, हे एका मोठ्या चुंबकासारखे काम करते जे सर्व काही पृथ्वीच्या केंद्राकडे खेचते.\n\nत्याशिवाय सर्व काही अंतराळात तरंगले असते!",
+    ta: "### எளிய அறிவியல்: ஏன் பொருட்கள் கீழே விழுகின்றன?\n**ஈர்ப்பு விசை** காரணமாக அனைத்தும் தரையில் விழுகின்றன. இயற்கையினால் உருவாக்கப்பட்டது, இது பூமியின் மையத்தை நோக்கி அனைத்தையும் இழுக்கும் ஒரு பெரிய காந்தம் போல செயல்படுகிறது.\n\nஅது இல்லையென்றால், அனைத்தும் விண்வெளியில் மிதந்துவிடும்!"
   }
 };
 
 export const getResponse = (input: string, lang: Exclude<Language, 'auto'>): string => {
   const query = input.toLowerCase();
   
-  if (/hi|hello|hey|namaste|नमस्ते|નમસ્તે/.test(query)) return responses.intro[lang];
-  if (/isro|space|moon|mars|rocket|चंद्र|मंगल|અંતરિક્ષ|விண்வெளி/.test(query)) return responses.isro[lang];
-  if (/festival|culture|india|harvest|त्यौहार|सण|તહેવાર|பண்டிகை/.test(query)) return responses.culture_simple[lang];
+  if (/hi|hello|hey|namaste|नमस्ते|નમસ્તે/.test(query)) return responses.hello[lang];
+  if (/place|heritage|history|india|भारत|વારસો|இடம்/.test(query)) return responses.places[lang];
+  if (/science|fall|why|gravity|विज्ञान|વિજ્ઞાન|அறிவியல்/.test(query)) return responses.science[lang];
   
-  return responses.intro[lang];
+  return responses.hello[lang];
 };
 
 export const getSuggestedQuestions = (lang: Language): string[] => {
   const code = lang === 'auto' ? 'en' : (lang as Exclude<Language, 'auto'>);
   const questions: Record<Exclude<Language, 'auto'>, string[]> = {
-    en: ["Tell me about ISRO", "Indian Festivals", "How to use this?", "Fact about India"],
-    hi: ["इसरो के बारे में बताएं", "भारतीय त्यौहार", "इसका उपयोग कैसे करें?", "भारत के बारे में तथ्य"],
-    gu: ["ISRO વિશે જણાવો", "ભારતીય તહેવારો", "આનો ઉપયોગ કેવી રીતે કરવો?", "ભારત વિશે હકીકત"],
-    mr: ["इस्रोबद्दल सांगा", "भारतीय सण", "हे कसे वापरायचे?", "भारताबद्दल तथ्य"],
-    ta: ["ISRO பற்றிச் சொல்", "இந்திய பண்டிகைகள்", "இதை எப்படி பயன்படுத்துவது?", "இந்தியா பற்றிய உண்மை"]
+    en: ["Tell me about India", "Why do things fall?", "Language help", "Tell me a fact"],
+    hi: ["भारत के बारे में बताएं", "चीजें क्यों गिरती हैं?", "भाषा सहायता", "कोई तथ्य बताएं"],
+    gu: ["ભારત વિશે જણાવો", "વસ્તુઓ કેમ નીચે પડે છે?", "ભાષાકીય મદદ", "કોઈ હકીકત જણાવો"],
+    mr: ["भारताबद्दल सांगा", "गोष्टी खाली का पडतात?", "भाषिक मदत", "तथ्य सांगा"],
+    ta: ["இந்தியாவைப் பற்றிச் சொல்", "ஏன் பொருட்கள் விழுகின்றன?", "மொழி உதவி", "ஒரு உண்மை சொல்"]
   };
   return questions[code] || questions.en;
 };

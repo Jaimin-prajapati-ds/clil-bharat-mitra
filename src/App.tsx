@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Send, Bot, User, Globe, Trash2, 
   MessageSquare, Copy, ChevronLeft, ChevronRight, 
-  Cpu, Languages, Book, Zap 
+  Lightbulb, BookOpen, Handshake, Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -19,8 +19,8 @@ interface Message {
   language?: Exclude<Language, 'auto'>;
 }
 
-const STORAGE_KEY = 'bharat_mitra_v4_messages';
-const LANG_KEY = 'bharat_mitra_v4_lang';
+const STORAGE_KEY = 'bharat_mitra_v5_simple_messages';
+const LANG_KEY = 'bharat_mitra_v5_simple_lang';
 
 const App: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>(() => {
@@ -28,7 +28,7 @@ const App: React.FC = () => {
     return saved ? JSON.parse(saved) : [
       {
         id: '1',
-        text: '### Welcome to Bharat-Mitra Regional AI\nUniversal multi-lingual assistant for regional intelligence. Please choose a language or start typing.',
+        text: '### Welcome to Bharat-Mitra V5.0\nI am your **Simple Regional Assistant**. I can help you understand many things in your own language. \n\n*Please type something or choose a language to start.*',
         sender: 'bot',
         language: 'en'
       }
@@ -118,44 +118,50 @@ const App: React.FC = () => {
 
   return (
     <div className="app-shell">
-      {/* PROFESSIONAL REGIONAL SIDEBAR */}
+      {/* SIMPLE & PREMIUM V5 SIDEBAR */}
       <aside className="sidebar" style={{ width: sidebarOpen ? 'var(--sidebar-width)' : '0', padding: sidebarOpen ? '24px' : '0' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
-          <div style={{ background: 'var(--accent-blue)', padding: '8px', borderRadius: '10px' }}>
-            <Cpu size={24} color="black" />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '40px' }}>
+          <div style={{ background: 'var(--accent-blue)', padding: '2px', borderRadius: '12px', overflow: 'hidden', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(56,189,248,0.3)' }}>
+            <img src="/logo.png" alt="Bharat-Mitra Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
-          <h2 style={{ fontSize: '1.2rem', margin: 0 }}>{t.sidebarTitle}</h2>
+          <h2 style={{ fontSize: '1.2rem', margin: 0, fontWeight: 700, color: 'white' }}>{t.sidebarTitle}</h2>
         </div>
 
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
-          <div className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px' }}>
-            <Languages size={16} /> {t.sidebarResource1}
-          </div>
-          <div className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px' }}>
-            <Book size={16} /> {t.sidebarResource2}
-          </div>
-          <div className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px' }}>
-            <Zap size={16} /> {t.sidebarResource3}
-          </div>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
+          <button className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', width: '100%' }}>
+            <Lightbulb size={18} className="gradient-text" /> {t.sidebarResource1}
+          </button>
+          <button className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', width: '100%' }}>
+            <BookOpen size={18} className="gradient-text" /> {t.sidebarResource2}
+          </button>
+          <button className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', width: '100%' }}>
+            <Handshake size={18} className="gradient-text" /> {t.sidebarResource3}
+          </button>
         </nav>
 
-        <div style={{ padding: '16px', borderRadius: '12px', background: 'rgba(56,189,248,0.05)', marginTop: '20px' }}>
-          <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
+        <div style={{ padding: '20px', borderRadius: '16px', background: 'rgba(56,189,248,0.05)', border: '1px solid rgba(255,255,255,0.05)', marginTop: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+             <Sparkles size={14} color="var(--accent-blue)" />
+             <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--accent-blue)', textTransform: 'uppercase' }}>V5.0 SIMPLE PRO</span>
+          </div>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
             {t.summary}
           </p>
         </div>
       </aside>
 
-      {/* MAIN REGIONAL CONTENT */}
+      {/* MAIN CONTENT AREA */}
       <div className="main-content">
-        <header className="input-header" style={{ borderBottom: '1px solid var(--border-light)', background: 'var(--bg-dark)' }}>
+        <header className="input-header" style={{ borderBottom: '1px solid var(--border-light)', background: 'rgba(10,10,12,0.8)', backdropFilter: 'blur(20px)' }}>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="btn-icon">
             {sidebarOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
           </button>
           
           <div style={{ flex: 1 }}>
-            <h1 className="gradient-text" style={{ fontSize: '1.2rem', marginBottom: 0 }}>{t.title} <span style={{ fontSize: '0.7rem', opacity: 0.6, verticalAlign: 'middle' }}>V4.0 PRO</span></h1>
-            <p style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.subtitle}</p>
+            <h1 className="gradient-text" style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: 0 }}>
+              {t.title} 
+            </h1>
+            <p style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '2px' }}>{t.subtitle}</p>
           </div>
 
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -163,23 +169,24 @@ const App: React.FC = () => {
               <button 
                 onClick={() => setShowLangMenu(!showLangMenu)}
                 className="chip"
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', borderColor: currentLang !== 'auto' ? 'var(--accent-blue)' : 'var(--border-light)' }}
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', borderRadius: '30px', borderColor: currentLang !== 'auto' ? 'var(--accent-blue)' : 'var(--border-light)' }}
               >
                 <Globe size={14} />
-                {langLabels[currentLang]}
+                <span style={{ fontWeight: 600 }}>{langLabels[currentLang]}</span>
               </button>
               <AnimatePresence>
                 {showLangMenu && (
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                    style={{ position: 'absolute', top: '110%', right: 0, zIndex: 100, width: '160px', background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '12px', padding: '8px', boxShadow: 'var(--shadow-premium)' }}
+                    style={{ position: 'absolute', top: '120%', right: 0, zIndex: 100, width: '180px', background: 'var(--bg-card)', border: '1px solid var(--border-light)', borderRadius: '16px', padding: '10px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
                   >
                     {Object.entries(langLabels).map(([code, label]) => (
                       <button
                         key={code}
                         onClick={() => { setCurrentLang(code as Language); setShowLangMenu(false); }}
-                        style={{ width: '100%', padding: '8px', background: currentLang === code ? 'rgba(56,189,248,0.1)' : 'transparent', border: 'none', color: 'white', textAlign: 'left', borderRadius: '6px', fontSize: '0.8rem', cursor: 'pointer' }}
+                        style={{ width: '100%', padding: '10px 12px', background: currentLang === code ? 'rgba(56,189,248,0.1)' : 'transparent', border: 'none', color: 'white', textAlign: 'left', borderRadius: '8px', fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
                       >
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: currentLang === code ? 'var(--accent-blue)' : 'rgba(255,255,255,0.2)' }} />
                         {label}
                       </button>
                     ))}
@@ -187,7 +194,7 @@ const App: React.FC = () => {
                 )}
               </AnimatePresence>
             </div>
-            <button onClick={clearChat} className="btn-icon"><Trash2 size={18} /></button>
+            <button onClick={clearChat} className="btn-icon" style={{ color: '#ef4444' }}><Trash2 size={18} /></button>
           </div>
         </header>
 
@@ -201,7 +208,9 @@ const App: React.FC = () => {
                 className={`message-row ${msg.sender}`}
               >
                 {msg.sender === 'bot' && (
-                  <div className="avatar"><Bot size={18} color="var(--accent-blue)" /></div>
+                  <div className="avatar" style={{ border: '2px solid rgba(56,189,248,0.2)' }}>
+                    <img src="/logo.png" alt="Bot" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  </div>
                 )}
                 <div className={`bubble ${msg.sender}`}>
                   {msg.sender === 'bot' && msg.language && (
@@ -226,16 +235,18 @@ const App: React.FC = () => {
               </motion.div>
             ))}
             {isTyping && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="message-row bot">
-                <div className="avatar"><Bot size={18} color="var(--accent-blue)" /></div>
-                <div className="bubble bot" style={{ padding: '12px 20px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="message-row bot">
+                <div className="avatar" style={{ border: '2px solid rgba(56,189,248,0.2)' }}>
+                    <img src="/logo.png" alt="Bot" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                </div>
+                <div className="bubble bot" style={{ padding: '16px 24px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ display: 'flex', gap: '4px' }}>
-                      <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
-                      <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
-                      <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                      <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                      <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                      <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
                     </div>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{t.typing}</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 500 }}>{t.typing}</span>
                   </div>
                 </div>
               </motion.div>
@@ -245,14 +256,15 @@ const App: React.FC = () => {
         </section>
 
         <div className="input-container-v2">
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' }}>
+          {/* SIMPLE SUGGESTED QUESTIONS */}
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px', justifyContent: 'center' }}>
             {getSuggestedQuestions(currentLang === 'auto' ? activeLang : currentLang).map((q, i) => (
               <button key={i} onClick={() => handleSend(q)} className="chip">{q}</button>
             ))}
           </div>
 
-          <div className="input-box-wrapper">
-            <MessageSquare size={18} color="var(--text-secondary)" />
+          <div className="input-box-wrapper" style={{ border: '2px solid rgba(255,255,255,0.05)' }}>
+            <MessageSquare size={18} color="var(--accent-blue)" />
             <input
               type="text"
               value={input}
@@ -266,8 +278,8 @@ const App: React.FC = () => {
             </button>
           </div>
           
-          <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '0.65rem', color: 'var(--text-secondary)', letterSpacing: '0.5px' }}>
-            UNIVERSAL REGIONAL AI | BHARAT-MITRA V4.0
+          <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '0.7rem', color: 'var(--text-secondary)', letterSpacing: '1px', fontWeight: 600 }}>
+            BHARAT-MITRA V5.0 SIMPLE PRO | DESIGNED FOR EVERYONE
           </div>
         </div>
       </div>

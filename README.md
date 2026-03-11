@@ -1,31 +1,22 @@
-# Bharat-Mitra: Universal Regional AI Assistant
+# Bharat-Mitra: Ultimate Simple Regional AI (V5.0)
 
-Bharat-Mitra is a deep, general-purpose multi-lingual chatbot designed to provide high-tier intelligence across Indian regional languages. It combines advanced script detection with a professional dashboard interface to assist users in their native language.
+Bharat-Mitra is a deep, yet simple multi-lingual chatbot designed to provide high-tier intelligence across Indian regional languages in a way that anyone can understand. 
 
 ## 🚀 Live Demo
 **[clil-bharat-mitra.vercel.app](https://clil-bharat-mitra.vercel.app)**
 
-## ✨ Universal Regional Features
-- **Total Interface Localization**: Every UI element—from sidebar tools to system messages—automatically adapts to the selected regional language.
-- **Deep Regional Intelligence**: High-accuracy responses for general knowledge, science, language learning, and daily assistance in Hindi, Gujarati, Marathi, and Tamil.
-- **Advanced Persistence**: Automatically saves your chat history and linguistic preferences locally.
-- **Academic-Grade Formatting**: Full support for professional Markdown rendering (headings, code blocks, blockquotes).
-- **Toolbox Architecture**: Integrated sidebar featuring Language Learning tips, General Knowledge databases, and Technical Support.
+## ✨ V5.0 Simple Pro Features
+- **New 3D Branding**: A professional futuristic logo integrated into the interface and favicon.
+- **Simple Regional Wisdom**: Deep knowledge about ISRO, Indian Heritage, and Future Tech explained in very simple, easy-to-understand language.
+- **Total Interface Localization**: The entire dashboard (sidebar, header, tools) translates instantly to your chosen language.
+- **Smart Detection**: Instantly detects and switches to Hindi, Gujarati, Marathi, Tamil, or English.
+- **Zero Confusion**: Clean, minimalist UI designed for a smooth, professional experience without any clutter.
 
 ## 🛠️ Technology Stack
 - **Framework**: React.js 19 + Vite
-- **Logic**: Custom V4 NLP Engine with universal UI binding
-- **Styling**: Premium Glassmorphic Design System
-- **Persistence**: Browser-native LocalStorage Sync
+- **Logic**: Custom V5 Simple-NLP Engine
+- **Branding**: 3D-AI Generated Visual Identity
 - **Deployment**: Vercel Progressive Deployment
 
-## ⚙️ Development
-To run this project locally:
-```bash
-cd web
-npm install
-npm run dev
-```
-
 ---
-*Bharat-Mitra V4.0 | Professional Regional Intelligence*
+*Bharat-Mitra V5.0 | Simple Words. Deep Wisdom.*

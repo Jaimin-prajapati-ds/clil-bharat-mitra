@@ -1,27 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Bot, User, Globe, Sparkles, Trash2, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { detectLanguage, getResponse, getSuggestedQuestions } from './utils/nlpEngine';
+import { detectLanguage, getResponse, getSuggestedQuestions, langLabels } from './utils/nlpEngine';
+import type { Language } from './utils/nlpEngine';
 
 interface Message {
   id: string;
   text: string;
   sender: 'user' | 'bot';
-  language?: string;
+  language?: Exclude<Language, 'auto'>;
 }
 
 const App: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Namaste! Bharat-Mitra is here. How can I help you with your studies today? (Science, Math, History?)',
+      text: 'Namaste! Bharat-Mitra is here. How can I help you today? (Choose a language or type below)',
       sender: 'bot',
       language: 'en'
     }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [currentLang, setCurrentLang] = useState<'hi' | 'gu' | 'mr' | 'ta' | 'en'>('en');
+  const [currentLang, setCurrentLang] = useState<Language>('auto');
+  const [showLangMenu, setShowLangMenu] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -47,15 +49,16 @@ const App: React.FC = () => {
     setIsTyping(true);
 
     setTimeout(() => {
-      const language = detectLanguage(textToSend);
-      setCurrentLang(language);
-      const botResponseText = getResponse(textToSend, language);
+      const detectedLang = detectLanguage(textToSend);
+      const finalLang = currentLang === 'auto' ? detectedLang : (currentLang as Exclude<Language, 'auto'>);
+      
+      const botResponseText = getResponse(textToSend, finalLang);
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: botResponseText,
         sender: 'bot',
-        language: language
+        language: finalLang
       };
 
       setMessages(prev => [...prev, botMessage]);
@@ -68,7 +71,7 @@ const App: React.FC = () => {
       id: '1',
       text: 'Chat cleared. How can I help you now?',
       sender: 'bot',
-      language: 'en'
+      language: currentLang === 'auto' ? 'en' : (currentLang as Exclude<Language, 'auto'>)
     }]);
   };
 
@@ -85,15 +88,81 @@ const App: React.FC = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Innovative CLIL Assistant</p>
             </div>
           </div>
-          <button onClick={clearChat} className="glass-panel" style={{ 
-            background: 'transparent', 
-            border: 'none', 
-            padding: '8px', 
-            cursor: 'pointer',
-            color: 'var(--text-secondary)'
-          }}>
-            <Trash2 size={18} />
-          </button>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <div style={{ position: 'relative' }}>
+              <button 
+                onClick={() => setShowLangMenu(!showLangMenu)}
+                className="glass-panel" 
+                style={{ 
+                  background: 'rgba(255, 255, 255, 0.05)', 
+                  border: '1px solid var(--glass-border)', 
+                  padding: '6px 12px', 
+                  borderRadius: '10px',
+                  cursor: 'pointer',
+                  color: 'white',
+                  fontSize: '0.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}
+              >
+                <Globe size={14} />
+                {langLabels[currentLang]}
+              </button>
+              <AnimatePresence>
+                {showLangMenu && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="glass-panel"
+                    style={{ 
+                      position: 'absolute', 
+                      top: '110%', 
+                      right: 0, 
+                      zIndex: 100, 
+                      width: '140px',
+                      padding: '8px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '4px'
+                    }}
+                  >
+                    {Object.entries(langLabels).map(([code, label]) => (
+                      <button
+                        key={code}
+                        onClick={() => {
+                          setCurrentLang(code as Language);
+                          setShowLangMenu(false);
+                        }}
+                        style={{
+                          background: currentLang === code ? 'rgba(59, 130, 246, 0.2)' : 'transparent',
+                          border: 'none',
+                          color: 'white',
+                          padding: '8px',
+                          borderRadius: '6px',
+                          textAlign: 'left',
+                          cursor: 'pointer',
+                          fontSize: '0.8rem'
+                        }}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <button onClick={clearChat} className="glass-panel" style={{ 
+              background: 'transparent', 
+              border: 'none', 
+              padding: '8px', 
+              cursor: 'pointer',
+              color: 'var(--text-secondary)'
+            }}>
+              <Trash2 size={18} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -140,7 +209,7 @@ const App: React.FC = () => {
       </main>
 
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '0 10px' }}>
-        {getSuggestedQuestions(currentLang).map((q, i) => (
+        {getSuggestedQuestions(currentLang === 'auto' ? 'en' : currentLang).map((q, i) => (
           <motion.button
             key={i}
             whileHover={{ scale: 1.05 }}

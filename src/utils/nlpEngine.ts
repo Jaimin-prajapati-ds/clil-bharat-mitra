@@ -2,9 +2,18 @@
  * Bharat-Mitra NLP Engine - Enhanced Knowledge Base
  */
 
-type Language = 'hi' | 'gu' | 'mr' | 'ta' | 'en';
+export type Language = 'hi' | 'gu' | 'mr' | 'ta' | 'en' | 'auto';
 
-export const detectLanguage = (text: string): Language => {
+export const langLabels: Record<string, string> = {
+  en: 'English',
+  hi: 'Hindi',
+  gu: 'Gujarati',
+  mr: 'Marathi',
+  ta: 'Tamil',
+  auto: 'Auto Detect'
+};
+
+export const detectLanguage = (text: string): Exclude<Language, 'auto'> => {
   const hindiRegex = /[\u0900-\u097F]/;
   const gujaratiRegex = /[\u0a80-\u0aff]/;
   const tamilRegex = /[\u0b80-\u0bff]/;
@@ -20,7 +29,7 @@ export const detectLanguage = (text: string): Language => {
 };
 
 interface ResponseSet {
-  [key: string]: Record<Language, string>;
+  [key: string]: Record<Exclude<Language, 'auto'>, string>;
 }
 
 const responses: ResponseSet = {
@@ -68,7 +77,7 @@ const responses: ResponseSet = {
   }
 };
 
-export const getResponse = (input: string, lang: Language): string => {
+export const getResponse = (input: string, lang: Exclude<Language, 'auto'>): string => {
   const query = input.toLowerCase();
   
   if (/hi|hello|hey|namaste|नमस्ते|નમસ્તે/.test(query)) return responses.greeting[lang];
@@ -81,12 +90,13 @@ export const getResponse = (input: string, lang: Language): string => {
 };
 
 export const getSuggestedQuestions = (lang: Language): string[] => {
-  const questions: Record<Language, string[]> = {
+  const code = lang === 'auto' ? 'en' : (lang as Exclude<Language, 'auto'>);
+  const questions: Record<Exclude<Language, 'auto'>, string[]> = {
     en: ["What is CLIL?", "Explain Science", "Math concepts", "Who are you?"],
     hi: ["CLIL क्या है?", "विज्ञान समझाओ", "गणित के बारे में", "आप कौन हैं?"],
     gu: ["CLIL શું છે?", "વિજ્ઞાન સમજાવો", "ગણિત વિશે", "તમે કોણ છો?"],
     mr: ["CLIL काय आहे?", "विज्ञान समजावून सांगा", "गणित संकल्पना", "तुम्ही कोण आहात?"],
     ta: ["CLIL என்றால் என்ன?", "அறிவியல் விளக்கம்", "கணித கருத்துக்கள்", "நீங்கள் யார்?"]
   };
-  return questions[lang] || questions.en;
+  return questions[code] || questions.en;
 };

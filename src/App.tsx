@@ -87,9 +87,10 @@ const App: React.FC = () => {
 
     if (window.innerWidth <= 1024) setSidebarOpen(false);
 
-    setTimeout(() => {
-      const finalLang = currentLang === 'auto' ? detected : (currentLang as Exclude<Language, 'auto'>);
-      const botResponseText = getResponse(textToSend, finalLang);
+    const finalLang = currentLang === 'auto' ? detected : (currentLang as Exclude<Language, 'auto'>);
+    
+    try {
+      const botResponseText = await getResponse(textToSend, finalLang);
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -98,8 +99,11 @@ const App: React.FC = () => {
         language: finalLang
       };
       setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+       console.error("Chat Error:", error);
+    } finally {
       setIsTyping(false);
-    }, 1200);
+    }
   };
 
   const clearChat = () => {

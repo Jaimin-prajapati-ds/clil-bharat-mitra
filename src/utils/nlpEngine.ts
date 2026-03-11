@@ -1,5 +1,7 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 /**
- * Bharat-Mitra - Ultimate Regional Intelligence Edition
+ * Bharat-Mitra - REAL WORKING GEMINI EDITION
  * Deep Knowledge | Human Simplicity | Universal Heritage
  */
 
@@ -17,75 +19,92 @@ export const langLabels: Record<string, string> = {
 export const uiTranslations: Record<Exclude<Language, 'auto'>, Record<string, string>> = {
   en: {
     title: "Bharat-Mitra",
-    subtitle: "Your Deep Regional Heritage Guide",
+    subtitle: "Your AI Regional Heritage Guide",
     sidebarTitle: "Heritage Vault",
     sidebarResource1: "Ancient Wisdom",
     sidebarResource2: "Modern Science",
     sidebarResource3: "Literary Gems",
-    placeholder: "Ask about history, science, or literature...",
+    placeholder: "Ask anything in any language...",
     clearChat: "New Session",
-    typing: "Searching our heritage...",
-    intelligence: "English Guide",
+    typing: "Mitra is searching...",
+    intelligence: "Gemini Intelligence",
     copy: "Copy text",
-    summary: "Discover unthinkable depth through absolute simplicity."
+    summary: "Discover unthinkable depth through real-time AI."
   },
   hi: {
     title: "भारत-मित्र",
-    subtitle: "आपका गहरा क्षेत्रीय विरासत मार्गदर्शक",
+    subtitle: "आपका AI क्षेत्रीय विरासत मार्गदर्शक",
     sidebarTitle: "विरासत खजाना",
     sidebarResource1: "प्राचीन ज्ञान",
     sidebarResource2: "आधुनिक विज्ञान",
     sidebarResource3: "साहित्यिक रत्न",
-    placeholder: "इतिहास, विज्ञान या साहित्य के बारे में पूछें...",
+    placeholder: "कुछ भी पूछें...",
     clearChat: "नया सत्र",
-    typing: "विरासत खोज रहा हूँ...",
-    intelligence: "हिंदी मार्गदर्शक",
+    typing: "मित्र खोज रहा है...",
+    intelligence: "जेमिनी इंटेलिजेंस",
     copy: "कॉपी करें",
-    summary: "अनदेखी गहराई को सरल तरीके से जानें।"
+    summary: "असली AI के साथ अकल्पनीय गहराई खोजें।"
   },
   gu: {
     title: "ભારત-મિત્ર",
-    subtitle: "તમારા ઊંડા પ્રાદેશિક વારસા માર્ગદર્શક",
+    subtitle: "તમારા AI પ્રાદેશિક વારસા માર્ગદર્શક",
     sidebarTitle: "વારસાની તિજોરી",
     sidebarResource1: "પ્રાચીન જ્ઞાન",
     sidebarResource2: "આધુનિક વિજ્ઞાન",
     sidebarResource3: "સાહિત્યિક રત્નો",
-    placeholder: "ઇતિહાસ, વિજ્ઞાન અથવા સાહિત્ય વિશે પૂછો...",
+    placeholder: "કંઈપણ પૂછો...",
     clearChat: "નવું સત્ર",
-    typing: "વારસો શોધી રહ્યો છું...",
-    intelligence: "ગુજરાતી માર્ગદર્શક",
+    typing: "મિત્ર શોધી રહ્યો છે...",
+    intelligence: "જેમિની ઇન્ટેલિજન્સ",
     copy: "નકલ કરો",
-    summary: "અકલ્પનીય ઊંડાણને સરળ રીતે સમજો."
+    summary: "રિયલ-ટાઇમ AI દ્વારા અકલ્પનીય ઊંડાણ શોધો."
   },
   mr: {
     title: "भारत-मित्र",
-    subtitle: "तुमचा सखोल प्रादेशिक वारसा मार्गदर्शक",
+    subtitle: "तुमचा AI प्रादेशिक वारसा मार्गदर्शक",
     sidebarTitle: "वारसाvault",
     sidebarResource1: "प्राचीन ज्ञान",
     sidebarResource2: "आधुनिक विज्ञान",
     sidebarResource3: "साहित्यिक रत्ने",
-    placeholder: "इतिहास, विज्ञान किंवा साहित्याबद्दल विचारा...",
+    placeholder: "काहीही विचारा...",
     clearChat: "नवीन सत्र",
-    typing: "वारसा शोधत आहे...",
-    intelligence: "मराठी मार्गदर्शक",
+    typing: "मित्र शोधत आहे...",
+    intelligence: "जेमिनी इंटेलिजन्स",
     copy: "कॉपी करा",
-    summary: "अकल्पनीय खोली साध्या भाषेत अनुभवा."
+    summary: "रिअल-टाइम AI सह अकल्पनीय खोली अनुभवा."
   },
   ta: {
     title: "பாரத-மித்ரா",
-    subtitle: "உங்கள் ஆழ்ந்த பிராந்திய பாரம்பரிய வழிகாட்டி",
+    subtitle: "உங்கள் AI பிராந்திய பாரம்பரிய வழிகாட்டி",
     sidebarTitle: "பாரம்பரிய பெட்டகம்",
     sidebarResource1: "பண்டைய அறிவு",
     sidebarResource2: "நவீன அறிவியல்",
     sidebarResource3: "இலக்கிய ரத்தினங்கள்",
-    placeholder: "வரலாறு, அறிவியல் அல்லது இலக்கியம் பற்றி கேளுங்கள்...",
+    placeholder: "எது வேண்டுமானாலும் கேளுங்கள்...",
     clearChat: "புதிய அமர்வு",
-    typing: "பாரம்பரியத்தைத் தேடுகிறது...",
-    intelligence: "தமிழ் வழிகாட்டி",
+    typing: "மித்ரா தேடுகிறது...",
+    intelligence: "ஜெமினி இன்டெலிஜென்ஸ்",
     copy: "நகலெடு",
-    summary: "நம்பமுடியாத ஆழத்தை எளிமையின் மூலம் கண்டறியவும்."
+    summary: "நிகழ்நேர AI மூலம் நம்பமுடியாத ஆழத்தைக் கண்டறியவும்."
   }
 };
+
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ 
+  model: "gemini-1.5-flash",
+  systemInstruction: `You are "Bharat-Mitra", a premium, human-centric regional heritage guide for India.
+  Your goal is to explain complex topics (Ancient Science, History, Culture, Modern Achievements) in EXTREMELY SIMPLE, WARM, and UNDERSTANDABLE language.
+  
+  CORE RULES:
+  1. DO NOT use AI jargon, version numbers, or technical terms.
+  2. Speak like a wise and friendly guide (a "Mitra").
+  3. If the user asks in Hindi, Gujarati, Marathi, or Tamil, respond in THAT language.
+  4. Always use Markdown for formatting.
+  5. Keep responses concise but deep in knowledge.
+  6. Focus on regional pride and cultural heritage.
+  7. Use simple analogies for scientific concepts.
+  8. NO emojis in the body text (keep it premium), but you can use simple headings.`,
+});
 
 export const detectLanguage = (text: string): Exclude<Language, 'auto'> => {
   const hindiRegex = /[\u0900-\u097F]/;
@@ -102,77 +121,33 @@ export const detectLanguage = (text: string): Exclude<Language, 'auto'> => {
   return 'en';
 };
 
-interface ResponseSet {
-  [key: string]: Record<Exclude<Language, 'auto'>, string>;
-}
-
-const responses: ResponseSet = {
-  hello: {
-    en: "### Namaste! I am Bharat-Mitra\nI have evolved with **Deep Intelligence** to guide you through India's unthinkable heritage. You can ask me deep questions about:\n- **Ancient Science**: Zero, Ayurveda, and Surgery.\n- **Literary Legends**: Kabir, Narsinh Mehta, Tukaram, or Thiruvalluvar.\n- **Modern Wonders**: ISRO and Scientific breakthroughs.\n- **Regional Roots**: Specific facts about our languages.\n\nEverything is explained in **Simple Words** for everyone.",
-    hi: "### नमस्ते! मैं भारत-मित्र हूँ\nमैं भारत की अकल्पनीय विरासत के माध्यम से आपका मार्गदर्शन करने के लिए **गहरी बुद्धिमानी** के साथ विकसित हुआ हूँ। आप मुझसे इनके बारे में गहरे प्रश्न पूछ सकते हैं:\n- **प्राचीन विज्ञान**: शून्य, आयुर्वेद और सर्जरी।\n- **साहित्यिक दिग्गज**: कबीर, नरसिंह मेहता, तुकाराम या तिरुवल्लुवर।\n- **आधुनिक चमत्कार**: इसरो और वैज्ञानिक सफलताएं।\n- **क्षेत्रीय जड़ें**: हमारी भाषाओं के बारे में विशिष्ट तथ्य।\n\nसभी को **सरल शब्दों** में समझाया गया है ताकि हर कोई समझ सके।",
-    gu: "### નમસ્તે! હું ભારત-મિત્ર છું\nહું ભારતના અકલ્પનીય વારસામાં તમારું માર્ગદર્શન કરવા માટે **ઊંડી બુદ્ધિ** સાથે વિકસિત થયો છું. તમે મને આના વિશે ઊંડા પ્રશ્નો પૂછી શકો છો:\n- **પ્રાચીન વિજ્ઞાન**: શૂન્ય, આયુર્વેદ અને સર્જરી.\n- **સાહિત્યિક દિગ્ગજો**: કબીર, નરસિંહ મહેતા, તુકારામ અથવા તિરુવલ્લુવર.\n- **આધુનિક ચમત્કારો**: ISRO અને વૈજ્ઞાનિક સફળતાઓ.\n- **પ્રાદેશિક મૂળ**: આપણી ભાષાઓ વિશેના વિશિષ્ટ તથ્યો.\n\nદરેક માટે **સરળ શબ્દોમાં** સમજાવવામાં આવ્યું છે.",
-    mr: "### नमस्कार! मी भारत-मित्र आहे\nमी भारताच्या अकल्पनीय वारशात तुम्हाला मार्गदर्शन करण्यासाठी **सखोल बुद्धिमत्तेसह** विकसित झालो आहे. तुम्ही मला याबद्दल सखोल प्रश्न विचारू शकता:\n- **प्राचीन विज्ञान**: शून्य, आयुर्वेद आणि शस्त्रक्रिया (Surgery).\n- **साहित्यिक दिग्गज**: कबीर, नरसिंह मेहता, तुकाराम किंवा तिरुवल्लुवर.\n- **आधुनिक चमत्कार**: इस्रो आणि वैज्ञानिक प्रगती.\n- **प्रादेशिक मुळे**: आपल्या भाषांबद्दलची विशिष्ट तथ्ये.\n\nप्रत्येकासाठी **सोप्या भाषेत** स्पष्ट केले आहे.",
-    ta: "### வணக்கம்! நான் பாரத-மித்ரா\nஇந்தியாவின் நம்பமுடியாத பாரம்பரியத்தின் மூலம் உங்களுக்கு வழிகாட்ட நான் **ஆழ்ந்த அறிவுடன்** உருவாகியுள்ளேன். நீங்கள் என்னிடம் ஆழ்ந்த கேள்விகளைக் கேட்கலாம்:\n- **பண்டைய அறிவியல்**: பூஜ்ஜியம், ஆயுர்வேதம் மற்றும் அறுவை சிகிச்சை.\n- **இலக்கிய ஜாம்பவான்கள்**: கபீர், நரசிங் மேத்தா, துக்காரம் அல்லது திருவள்ளுவர்.\n- **நவீன அதிசயங்கள்**: இஸ்ரோ மற்றும் அறிவியல் முன்னேற்றங்கள்.\n- **பிராந்திய வேர்கள்**: நமது மொழிகளைப் பற்றிய குறிப்பிட்ட உண்மைகள்.\n\nஅனைவருக்கும் **எளிமையான சொற்களில்** விளக்கப்பட்டுள்ளது."
-  },
-  zero: {
-    en: "### The Power of Zero (Shunya)\nDid you know ancient Indians gave the world **Zero**? Without it, computer science and modern math wouldn't exist.\n- **Inventor**: Aryabhata was one of the first to use zero as a number.\n- **Why it matters**: It allowed for the decimal system (counting in tens) which we use daily!",
-    hi: "### शून्य की शक्ति\nक्या आप जानते हैं कि प्राचीन भारतीयों ने दुनिया को **शून्य (Zero)** दिया? इसके बिना कंप्यूटर विज्ञान और आधुनिक गणित का अस्तित्व नहीं होता।\n- **आविष्कारक**: आर्यभट्ट शून्य को संख्या के रूप में उपयोग करने वाले पहले लोगों में से एक थे।\n- **यह क्यों मायने रखता है**: इसने दशमलव प्रणाली (दस में गिनती) की अनुमति दी जिसे हम रोजाना उपयोग करते हैं!",
-    gu: "### શૂન્યની શક્તિ\nશું તમે જાણો છો કે પ્રાચીન ભારતીયોએ વિશ્વને **શૂન્ય** આપ્યું? તેના વગર કોમ્પ્યુટર સાયન્સ અને આધુનિક ગણિતનું અસ્તિત્વ ન હોત.\n- **શોધક**: આર્યભટ્ટ શૂન્યનો ઉપયોગ કરનાર પ્રથમ લોકોમાંના એક હતા.\n- **કેમ મહત્વનું છે**: તેણે દશાંશ પદ્ધતિ (દસના જૂથમાં ગણતરી) માટે રસ્તો ખોલ્યો જેનો આપણે રોજ ઉપયોગ કરીએ છીએ!",
-    mr: "### शून्याची शक्ती\nप्राचीन भारतीयांनी जगाला **शून्य** दिले हे तुम्हाला माहित आहे का? त्याशिवाय संगणक विज्ञान आणि आधुनिक गणित अस्तित्वात आले नसते.\n- **संशोधक**: आर्यभट्ट हे शून्याचा संख्या म्हणून वापर करणाऱ्या पहिल्या लोकांपैकी एक होते.\n- **हे का महत्त्वाचे आहे**: यामुळे दशांश पद्धती (दहामध्ये मोजणे) शक्य झाली जी आपण रोज वापरतो!",
-    ta: "### பூஜ்யத்தின் சக்தி\nபண்டைய இந்தியர்கள் உலகுக்கு **பூஜ்யத்தை** கொடுத்தார்கள் என்பது உங்களுக்குத் தெரியுமா? அது இல்லாமல் கணினி அறிவியல் மற்றும் நவீன கணிதம் இருந்திருக்காது.\n- **கண்டுபிடிப்பாளர்**: ஆர்யபட்டர் பூஜ்யத்தை ஒரு எண்ணாகப் பயன்படுத்திய முதல் நபர்களில் ஒருவர்.\n- **இது ஏன் முக்கியமானது**: நாம் தினமும் பயன்படுத்தும் தசம முறையை (பத்தில் எண்ணுவது) இது அனுமதித்தது!"
-  },
-  kabir: {
-    en: "### Kabir: The Simple Soul\nKabir was a poet-saint from Varanasi who believed in **One God** and humanity.\n- **Dohas**: His short 2-line poems are famous for teaching big life lessons in tiny words.\n- **Core Message**: Love everyone, and find God in your own heart, not just in stone.",
-    hi: "### कबीर: सरल आत्मा\nकबीर वाराणसी के एक कवि-संत थे जो **एक ईश्वर** और मानवता में विश्वास करते थे।\n- **दोहे**: उनकी छोटी 2-लाइन की कविताएं छोटे शब्दों में जीवन के बड़े सबक सिखाने के लिए प्रसिद्ध हैं।\n- **मुख्य संदेश**: सभी से प्यार करें, और ईश्वर को केवल पत्थर में नहीं बल्कि अपने दिल में खोजें।",
-    gu: "### કબીર: સરળ આત્મા\nકબીર વારાણસીના એક કવિ-સંત હતા જેઓ **એક ઈશ્વર** અને માનવતામાં માનતા હતા.\n- **દુહા**: તેમની ટૂંકી 2-લાઇનની કવિતાઓ નાના શબ્દોમાં જીવનના મોટા પાઠ શીખવવા માટે પ્રખ્યાત છે.\n- **મુખ્ય સંદેશ**: દરેકને પ્રેમ કરો, અને ભગવાનને ફક્ત પથ્થરમાં જ નહીં પણ તમારા પોતાના હૃદયમાં શોધો.",
-    mr: "### कबीर: सोपी विचारधारा\nकबीर हे वाराणसीचे एक कवी-संत होते ज्यांचा **एक देव** आणि मानवतेवर विश्वास होता.\n- **दोहे**: त्यांच्या छोट्या २-ओळींच्या कविता लहान शब्दांत जीवनाचे मोठे धडे शिकवण्यासाठी प्रसिद्ध आहेत.\n- **मुख्य संदेश**: सर्वांवर प्रेम करा आणि देवाला केवळ दगडात नाही तर स्वतःच्या हृदयात शोधा.",
-    ta: "### கபீர்: எளிய ஆன்மா\nகபீர் வாரணாசியைச் சேர்ந்த ஒரு கவிஞர்-துறவி , அவர் **ஒரே கடவுள்** மற்றும் மனிதாபிமானத்தை நம்பினார்.\n- **தோஹாக்கள்**: அவருடைய சிறிய 2-வரி கவிதைகள் சிறிய சொற்களில் பெரிய வாழ்க்கைப் பாடங்களைக் கற்பிப்பதில் பிரபலமானவை.\n- **முக்கிய செய்தி**: அனைவரையும் நேசிக்கவும், கடவுளைக் கல்லில் மட்டும் தேடாமல் உங்கள் சொந்த இதயத்தில் கண்டறியவும்."
-  },
-  thiruvalluvar: {
-    en: "### Thiruvalluvar: The Wise Weaver\nHe is the creator of the **Thirukkural**, one of the most translated books in the history of the world.\n- **Legacy**: 1,330 couplets (Kurals) about ethics, wealth, and love.\n- **Statue**: There is a giant 133-foot statue of him in Kanyakumari, matching the chapters of his book!",
-    hi: "### तिरुवल्लुवर: बुद्धिमान बुनकर\nवे **तिरुक्कुरल** के रचयिता हैं, जो दुनिया के इतिहास में सबसे अधिक अनुवादित पुस्तकों में से एक है।\n- **विरासत**: नैतिकता, धन और प्रेम के बारे में 1,330 दोहे (कुरल)।\n- **मूर्ति**: कन्याकुमारी में उनकी 133 फीट की विशाल मूर्ति है, जो उनकी पुस्तक के अध्यायों से मेल खाती है!",
-    gu: "### તિરુવલ્લુવર: જ્ઞાની વણકર\nતેઓ **તિરુક્કુરલ** ના સર્જક છે, જે વિશ્વના ઇતિહાસમાં સૌથી વધુ અનુવાદિત પુસ્તકોમાંનું એક છે.\n- **વારસો**: નૈતિકતા, સંપત્તિ અને પ્રેમ વિશે 1,330 દુહા (કુરલ).\n- **મૂર્તિ**: કન્યાકુમારીમાં તેમની વિશાળ 133 ફૂટની મૂર્તિ છે, જે તેમના પુસ્તકના પ્રકરણો સાથે મેળ ખાય છે!",
-    mr: "### तिरुवल्लुवर: विचारवंत विणकर\nते **तिरुक्कुरल** चे निर्माते आहेत, जे जगाच्या इतिहासातील सर्वाधिक अनुवादित पुस्तकांपैकी एक आहे.\n- **वारसा**: नैतिकता, संपत्ती आणि प्रेमाबद्दल १,३३० दोहे (कुरल).\n- **पुतळा**: कन्याकुमारी येथे त्यांचा १३३ फूट उंच महाकाय पुतळा आहे, जो त्यांच्या पुस्तकातील अध्यायांच्या संख्ये एवढा आहे!",
-    ta: "### திருவள்ளுவர்: அறிவுள்ள நெசவாளர்\nஅவர் உலக வரலாற்றில் அதிகம் மொழிபெயர்க்கப்பட்ட புத்தகங்களில் ஒன்றான **திருக்குறளை** உருவாக்கியவர்.\n- **பாரம்பரியம்**: அறம், பொருள் மற்றும் இன்பம் பற்றி 1,330 குறள்கள்.\n- **சிலை**: கன்னியாகுமரியில் அவரது 133 அடி உயர சிலை உள்ளது, இது அவரது புத்தகத்தின் அதிகாரங்களுடன் ஒத்துப்போகிறது!"
-  },
-  narsinh: {
-    en: "### Narsinh Mehta: The Adi Kavi\nKnown as the 'First Poet' of Gujarat. He saw God in humanity and fought against the caste system.\n- **Vaishnava Jana To**: His famous song about empathy was Mahatma Gandhi's favorite.\n- **Legacy**: He proved that devotion means serving the poor and the suffering.",
-    hi: "### नरसिंह मेहता: आदि कवि\nगुजरात के 'प्रथम कवि' के रूप में जाने जाते हैं। उन्होंने मानवता में ईश्वर को देखा और जाति व्यवस्था के खिलाफ लड़ाई लड़ी।\n- **वैष्णव जन तो**: सहानुभूति के बारे में उनका प्रसिद्ध गीत महात्मा गांधी का पसंदीदा था।\n- **विरासत**: उन्होंने साबित किया कि भक्ति का अर्थ गरीबों और पीड़ितों की सेवा करना है।",
-    gu: "### નરસિંહ મહેતા: આદિ કવિ\nગુજરાતના 'આદિ કવિ' તરીકે ઓળખાય છે. તેમણે માનવતામાં ભગવાનને જોયા અને જ્ઞાતિ પ્રથા સામે લડત આપી.\n- **વૈષ્ણવ જન તો**: સહાનુભૂતિ વિશેનું તેમનું પ્રખ્યાત ભજન મહાત્મા ગાંધીનું પ્રિય હતું.\n- **વારસો**: તેમણે સાબિત કર્યું કે ભક્તિ એટલે ગરીબો અને પીડિતોની સેવા કરવી.",
-    mr: "### नरसिंह मेहता: आदि कवी\nगुजरातचे 'पहिले कवी' म्हणून ओळखले जातात. त्यांनी मानवतेमध्ये ईश्वराला पाहिले आणि जातिव्यवस्थेविरुद्ध लढा दिला.\n- **वैष्णव जन तो**: सहानुभूतीबद्दलचे त्यांचे प्रसिद्ध गीत महात्मा गांधींचे आवडते होते.\n- **वारसा**: त्यांनी सिद्ध केले की भक्ती म्हणजे गरीब आणि पिडीत लोकांची सेवा करणे होय.",
-    ta: "### நரசிங் மேத்தா: ஆதி கவி\nகுஜராத்தின் 'முதல் கவிஞர்' என்று அழைக்கப்படுபவர். அவர் மனிதநேயத்தில் கடவுளைக் கண்டார் மற்றும் ஜாதி முறைக்கு எதிராகப் போராடினார்.\n- **வைஷ்ணவ ஜன தோ**: பச்சாதாபம் பற்றிய இவரது புகழ்பெற்ற பாடல் மகாத்மா காந்திக்கு மிகவும் பிடித்தமானது.\n- **பாரம்பரியம்**: பக்தி என்பது ஏழைகளுக்கும் துன்பப்படுபவர்களுக்கும் சேவை செய்வதாகும் என்பதை அவர் நிரூபித்தார்."
-  },
-  ayurveda: {
-    en: "### Ayurveda: The Science of Life\nDeveloped 5,000 years ago, it is the world's oldest healing system still in use.\n- **Balance**: It teaches that health is a balance between body, mind, and spirit.\n- **Nature**: It uses herbs, food, and daily routine to keep us strong without side effects.",
-    hi: "### आयुर्वेद: जीवन का विज्ञान\n5,000 साल पहले विकसित, यह दुनिया की सबसे पुरानी चिकित्सा प्रणाली है जो आज भी उपयोग में है।\n- **संतुलन**: यह सिखाता है कि स्वास्थ्य शरीर, मन और आत्मा के बीच का संतुलन है।\n- **प्रकृति**: यह हमें दुष्प्रभावों के बिना मजबूत रखने के लिए जड़ी-बूटियों, भोजन और दैनिक दिनचर्या का उपयोग करता है।",
-    gu: "### આયુર્વેદ: જીવનનું વિજ્ઞાન\n5,000 વર્ષ પહેલાં વિકસિત, તે વિશ્વની સૌથી જૂની હીલિંગ સિસ્ટમ છે જે આજે પણ ઉપયોગમાં છે.\n- **સંતુલન**: તે શીખવે છે કે સ્વાસ્થ્ય એ શરીર, મન અને આત્મા વચ્ચેનું સંતુલન છે.\n- **કુદરત**: તે આડઅસર વિના આપણને મજબૂત રાખવા માટે વનસ્પતિઓ, ખોરાક અને દૈનિક દિનચર્યાનો ઉપયોગ કરે છે.",
-    mr: "### आयुर्वेद: जीवनाचे विज्ञान\n५,००૦ वर्षांपूर्वी विकसित झालेली, ही जगातील सर्वात जुनी आरोग्य व्यवस्था आहे जी आजही वापरात आहे.\n- **संतुलन**: हे शिकवते की आरोग्य म्हणजे शरीर, मन आणि आत्मा यांचा समतोल होय.\n- **निसर्ग**: हे आपल्याला दुष्प्रभावांशिवाय मजबूत ठेवण्यासाठी औषधी वनस्पती, अन्न आणि दैनंदિન दिनचर्या यांचा वापर करते.",
-    ta: "### ஆயுர்வேதம்: வாழ்வியல் அறிவியல்\n5,000 ஆண்டுகளுக்கு முன்பு உருவாக்கப்பட்டது, இது இன்றும் பயன்பாட்டில் உள்ள உலகின் பழமையான சிகிச்சை முறையாகும்.\n- **சமநிலை**: ஆரோக்கியம் என்பது உடல், மனம் மற்றும் ஆன்மாவிற்கு இடையிலான சமநிலை என்று இது கற்பிக்கிறது.\n- **இயற்கை**: இது பக்கவிளைவுகள் இல்லாமல் நம்மை வலுவாக வைத்திருக்க மூலிகைகள், உணவு மற்றும் அன்றாட வழக்கத்தைப் பயன்படுத்துகிறது."
+export const getResponse = async (input: string, lang: Exclude<Language, 'auto'>): Promise<string> => {
+  try {
+    const prompt = `User language: ${langLabels[lang]}. \nUser query: ${input}`;
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    return response.text();
+  } catch (error) {
+    console.error("Gemini API Error:", error);
+    const fallbacks = {
+      en: "I am sorry, I am having trouble reaching the knowledge vault. Please check your connection.",
+      hi: "क्षमा करें, मुझे ज्ञान भंडार तक पहुँचने में समस्या हो रही है। कृपया अपना कनेक्शन जांचें।",
+      gu: "ક્ષમા કરશો, મને જ્ઞાન તિજોરી સુધી પહોંચવામાં સમસ્યા થઈ રહી છે. કૃપા કરીને તમારું કનેક્શન તપાસો.",
+      mr: "क्षमस्व, मला ज्ञान भांडारापर्यंत पोहोचण्यात अडचण येत आहे. कृपया तुमचे कनेक्शन तपासा.",
+      ta: "மன்னிக்கவும், அறிவு பெட்டகத்தை அடைவதில் எனக்கு சிக்கல் உள்ளது. உங்கள் இணைப்பைச் சரிபார்க்கவும்."
+    };
+    return fallbacks[lang] || fallbacks.en;
   }
-};
-
-export const getResponse = (input: string, lang: Exclude<Language, 'auto'>): string => {
-  const query = input.toLowerCase();
-  
-  // Smart Keyword Weighting Logic (Simple Version)
-  if (/hi|hello|hey|नमस्ते|નમસ્તે|வணக்கம்|नमस्कार/.test(query)) return responses.hello[lang];
-  if (/zero|shunya|aryabhata|math|शून्य|સૂન્ય|பூஜ்யம்/.test(query)) return responses.zero[lang];
-  if (/kabir|doha|वाराणसी|कबीर/.test(query)) return responses.kabir[lang];
-  if (/thiruvalluvar|thirukkural|திருவள்ளுவர்|திருக்குறள்/.test(query)) return responses.thiruvalluvar[lang];
-  if (/narsinh|mehta|gujarat|vaishnava|નરસિંહ/.test(query)) return responses.narsinh[lang];
-  if (/ayurveda|yoga|medicine|health|आयुर्वेद|આયુર્વેદ|ஆயுர்வேதம்/.test(query)) return responses.ayurveda[lang];
-  
-  return responses.hello[lang];
 };
 
 export const getSuggestedQuestions = (lang: Language): string[] => {
   const code = lang === 'auto' ? 'en' : (lang as Exclude<Language, 'auto'>);
   const questions: Record<Exclude<Language, 'auto'>, string[]> = {
-    en: ["Who invented Zero?", "Tell me about Kabir", "What is Ayurveda?", "Tamil Literature facts"],
-    hi: ["शून्य का आविष्कार किसने किया?", "कबीर के बारे में बताएं", "आयुर्वेद क्या है?", "प्राचीन भारत का विज्ञान"],
-    gu: ["શૂન્યની શોધ કોણે કરી?", "નરસિંહ મહેતા વિશે જણાવો", "આયુર્વેદ શું છે?", "ભારતીય વારસો"],
-    mr: ["शून्याचा शोध कोणी लावला?", "संत तुकाराम बद्दल सांगा", "आयुर्वेद म्हणजे काय?", "भारताचे प्राचीन ज्ञान"],
-    ta: ["பூஜ்யத்தை கண்டுபிடித்தது யார்?", "திருவள்ளுவர் பற்றிச் சொல்", "ஆயுர்வேதம் என்றால் என்ன?", "தமிழ் இலக்கிய உண்மைகள்"]
+    en: ["Who invented Zero?", "Tell me about Kabir", "ISRO's latest mission", "Tamil Literature depth"],
+    hi: ["शून्य का आविष्कार किसने किया?", "कबीर के बारे में बताएं", "इसरो का मिशन", "प्राचीन भारत का विज्ञान"],
+    gu: ["શૂન્યની શોધ કોણે કરી?", "નરસિંહ મહેતા વિશે જણાવો", "આયુર્વેદ શું છે?", "ભારતીય વિજ્ઞાન"],
+    mr: ["शून्याचा शोध कोणी लावला?", "संत तुकाराम बद्दल सांगा", "गड-किल्ल्यांचा इतिहास", "भारताचे प्राचीन ज्ञान"],
+    ta: ["பூஜ்யத்தை கண்டுபிடித்தது யார்?", "திருவள்ளுவர் பற்றிச் சொல்", "காவிரி நதியின் வரலாறு", "தமிழ் இலக்கியம்"]
   };
   return questions[code] || questions.en;
 };

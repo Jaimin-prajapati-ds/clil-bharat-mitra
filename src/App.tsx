@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Send, User, Globe, Trash2, 
   MessageSquare, Copy, ChevronRight, 
-  Compass, Star, Feather, Sparkles
+  Compass, Star, Feather, Sparkles, BookOpen
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -19,7 +19,7 @@ interface Message {
   language?: Exclude<Language, 'auto'>;
 }
 
-const STORAGE_KEY = 'bharat_mitra_ultimate_vault';
+const STORAGE_KEY = 'bharat_mitra_bca_vault';
 const LANG_KEY = 'bharat_mitra_heritage_lang';
 
 const App: React.FC = () => {
@@ -28,7 +28,7 @@ const App: React.FC = () => {
     return saved ? JSON.parse(saved) : [
       {
         id: '1',
-        text: '### Namaste! Welcome to Bharat-Mitra\nI am your companion in discovering India\'s unthinkable heritage. From the **invention of Zero** to the wisdom of **Kabir**, I have deep knowledge waiting for you.\n\n*Choose a language and let\'s explore our roots together.*',
+        text: '### Namaste! Welcome to Bharat-Mitra\nI am your companion in discovering India\'s unthinkable heritage. This platform is built using **BCA-Standard Technologies** like **React, TypeScript, and Advanced NLP Logic**.\n\n*Choose a language and let\'s explore our roots together.*',
         sender: 'bot',
         language: 'en'
       }
@@ -73,7 +73,7 @@ const App: React.FC = () => {
 
   const t = uiTranslations[activeLang];
 
-  const handleSend = async (textOverride?: string) => {
+  const handleSend = (textOverride?: string) => {
     const textToSend = textOverride || input;
     if (!textToSend.trim()) return;
 
@@ -87,10 +87,10 @@ const App: React.FC = () => {
 
     if (window.innerWidth <= 1024) setSidebarOpen(false);
 
-    const finalLang = currentLang === 'auto' ? detected : (currentLang as Exclude<Language, 'auto'>);
-    
-    try {
-      const botResponseText = await getResponse(textToSend, finalLang);
+    // Synchronous execution but with a slight delay for "Processing" feel (College standard)
+    setTimeout(() => {
+      const finalLang = currentLang === 'auto' ? detected : (currentLang as Exclude<Language, 'auto'>);
+      const botResponseText = getResponse(textToSend, finalLang);
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -99,11 +99,8 @@ const App: React.FC = () => {
         language: finalLang
       };
       setMessages(prev => [...prev, botMessage]);
-    } catch (error) {
-       console.error("Chat Error:", error);
-    } finally {
       setIsTyping(false);
-    }
+    }, 800);
   };
 
   const clearChat = () => {
@@ -123,36 +120,40 @@ const App: React.FC = () => {
           <div style={{ padding: '2px', borderRadius: '50%', overflow: 'hidden', width: '45px', height: '45px', background: 'var(--bg-card)', border: '2px solid rgba(255,255,255,0.1)' }}>
             <img src="/logo.png" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
-          <h2 style={{ fontSize: '1.4rem', margin: 0, fontWeight: 700, color: 'white', letterSpacing: '-0.5px' }}>{t.title}</h2>
+          <h2 style={{ fontSize: '1.4rem', margin: 0, fontWeight: 700, color: 'white' }}>{t.title}</h2>
         </div>
 
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
-          <button onClick={() => handleSend("Who invented Zero?")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
+          <button onClick={() => handleSend("Tell me about Ancient Wisdom")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
             <Compass size={20} color="var(--accent-blue)" /> {t.sidebarResource1}
           </button>
-          <button onClick={() => handleSend("Tell me about Modern Science")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
+          <button onClick={() => handleSend("What is Modern Science?")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
             <Sparkles size={20} color="#fcd34d" /> {t.sidebarResource2}
           </button>
-          <button onClick={() => handleSend("Show me Literary Gems")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
+          <button onClick={() => handleSend("Tell me about Literary Gems")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
             <Feather size={20} color="var(--accent-purple)" /> {t.sidebarResource3}
+          </button>
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)', margin: '10px 0' }} />
+          <button className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%', background: 'rgba(255,255,255,0.01)' }}>
+            <BookOpen size={20} color="var(--accent-blue)" /> {activeLang === 'en' ? "Academic Guide" : "अकादमिक गाइड"}
           </button>
         </nav>
 
-        <div style={{ padding: '20px', borderRadius: '24px', background: 'linear-gradient(135deg, rgba(56,189,248,0.1) 0%, rgba(129,140,248,0.1) 100%)', border: '1px solid rgba(255,255,255,0.08)', marginTop: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+        <div style={{ padding: '20px', borderRadius: '24px', background: 'linear-gradient(135deg, rgba(56,189,248,0.05) 0%, rgba(129,140,248,0.05) 100%)', border: '1px solid rgba(255,255,255,0.05)', marginTop: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
              <Star size={14} color="#fcd34d" fill="#fcd34d" />
-             <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#fcd34d', textTransform: 'uppercase', letterSpacing: '1px' }}>ULTIMATE EDITION</span>
+             <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#fcd34d', letterSpacing: '1px' }}>BCA INNOVATIVE PROJECT</span>
           </div>
-          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, fontWeight: 500 }}>
+          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
             {t.summary}
           </p>
         </div>
       </aside>
 
       <div className="main-content">
-        <header className="input-header" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(2, 6, 23, 0.4)', backdropFilter: 'blur(40px)' }}>
+        <header className="input-header" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(2, 6, 23, 0.4)', backdropFilter: 'blur(30px)' }}>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="btn-icon">
-            <ChevronRight size={24} style={{ transform: sidebarOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }} />
+            <ChevronRight size={24} style={{ transform: sidebarOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.4s ease' }} />
           </button>
           
           <div style={{ flex: 1 }}>
@@ -234,7 +235,7 @@ const App: React.FC = () => {
           <div ref={messagesEndRef} />
         </section>
 
-        <div className="input-container-v2" style={{ paddingBottom: '40px', background: 'linear-gradient(0deg, rgba(2,6,23,0.95) 0%, rgba(2,6,23,0.8) 100%)' }}>
+        <div className="input-container-v2" style={{ paddingBottom: '40px' }}>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '30px', justifyContent: 'center', maxWidth: '900px', margin: '0 auto 30px auto' }}>
             {getSuggestedQuestions(currentLang === 'auto' ? activeLang : currentLang).map((q, i) => (
               <button key={i} onClick={() => handleSend(q)} className="chip" style={{ background: 'rgba(255,255,255,0.03)', padding: '10px 20px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)', fontWeight: 600 }}>{q}</button>
@@ -244,11 +245,11 @@ const App: React.FC = () => {
           <div className="input-box-wrapper" style={{ maxWidth: '850px', margin: '0 auto', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.1)', padding: '12px 24px', borderRadius: '22px' }}>
             <MessageSquare size={22} color="var(--accent-blue)" />
             <input type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSend()} placeholder={t.placeholder} className="input-field" style={{ fontSize: '1.1rem', fontWeight: 500 }} />
-            <button onClick={() => handleSend()} className="btn-icon btn-send" style={{ width: '50px', height: '50px', borderRadius: '16px', background: 'linear-gradient(135deg, rgba(56,189,248,0.15) 0%, rgba(129,140,248,0.15) 100%)' }}>
+            <button onClick={() => handleSend()} className="btn-icon btn-send" style={{ width: '50px', height: '50px', borderRadius: '16px' }}>
               <Send size={24} />
             </button>
           </div>
-          <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.3)', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase' }}>BHARAT-MITRA | ULTIMATE KNOWLEDGE EDITION</div>
+          <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.2)', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase' }}>BHARAT-MITRA | SILVER OAK BCA SEM-4 INNOVATIVE PROJECT</div>
         </div>
       </div>
       <style>{`@media (max-width: 640px) { .mobile-hide { display: none; } .bubble { max-width: 95% !important; } .chat-window { padding: 25px 15px !important; } }`}</style>

@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# Bharat-Mitra: Professional Regional CLIL Academic Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bharat-Mitra is a high-performance, multi-lingual chatbot designed for **Content and Language Integrated Learning (CLIL)**. It provides academic support across multiple Indian regional languages with a premium, dashboard-style user interface.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+**[clil-bharat-mitra.vercel.app](https://clil-bharat-mitra.vercel.app)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Key Features
+- **Multi-lingual Intelligence**: Supports Hindi, Gujarati, Marathi, Tamil, and English with automatic script detection.
+- **Academic Dashboard**: A professional UI built with a persistent sidebar, research utilities, and high-end typography.
+- **Rich Content Rendering**: Full support for Markdown, ensuring academic responses are formatted with headings, lists, code blocks, and blockquotes.
+- **Session Persistence**: Utilizes `localStorage` to preserve chat history and user preferences across browser sessions.
+- **Copy-to-Clipboard**: Quick utility to capture academic insights for assignment documentation.
 
-## React Compiler
+## 🛠️ Technology Stack
+- **Framework**: [React.js](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: Vanilla CSS Design System with Glassmorphism
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Markdown**: [React-Markdown](https://github.com/remarkjs/react-markdown)
+- **Deployment**: [Vercel](https://vercel.com/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 Project Structure
+```
+web/
+├── src/
+│   ├── utils/
+│   │   └── nlpEngine.ts    # Custom rule-based NLP logic
+│   ├── App.tsx             # Main Dashboard UI & Logic
+│   └── index.css           # Professional Design System
+└── vercel.json             # Deployment Configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📖 Methodology
+This project implements the **CLIL (Content and Language Integrated Learning)** framework, focusing on the 4 Cs:
+1. **Content**: Subject knowledge acquisition.
+2. **Communication**: Language usage for learning.
+3. **Cognition**: Critical thinking and analysis.
+4. **Culture**: Diverse linguistic perspectives.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ⚙️ Development
+To run this project locally:
+```bash
+cd web
+npm install
+npm run dev
 ```
+
+---
+*Built for the Innovative CLIL Academic Assignment | Bharat-Mitra V2.0 PRO*

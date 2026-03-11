@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Send, User, Globe, Trash2, 
   MessageSquare, Copy, ChevronRight, 
-  Compass, Info, Star, MapPin, Feather, Sparkles
+  Compass, Star, Feather, Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -123,13 +123,13 @@ const App: React.FC = () => {
         </div>
 
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
-          <button onClick={() => handleSend("Tell me about Ancient Wisdom")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
+          <button onClick={() => handleSend("Who invented Zero?")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
             <Compass size={20} color="var(--accent-blue)" /> {t.sidebarResource1}
           </button>
-          <button onClick={() => handleSend("Latest Science discoveries")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
+          <button onClick={() => handleSend("Tell me about Modern Science")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
             <Sparkles size={20} color="#fcd34d" /> {t.sidebarResource2}
           </button>
-          <button onClick={() => handleSend("Regional Literary Gems")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
+          <button onClick={() => handleSend("Show me Literary Gems")} className="chip" style={{ justifyContent: 'flex-start', padding: '16px', borderRadius: '16px', width: '100%' }}>
             <Feather size={20} color="var(--accent-purple)" /> {t.sidebarResource3}
           </button>
         </nav>

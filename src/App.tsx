@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Send, Bot, User, Globe, Trash2, 
   MessageSquare, Copy, ChevronLeft, ChevronRight, 
-  Layout, BookOpen, GraduationCap, Info 
+  Cpu, Languages, Book, Zap 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { 
   detectLanguage, getResponse, getSuggestedQuestions, 
-  langLabels
+  langLabels, uiTranslations
 } from './utils/nlpEngine';
 import type { Language } from './utils/nlpEngine';
 
@@ -19,17 +19,16 @@ interface Message {
   language?: Exclude<Language, 'auto'>;
 }
 
-const STORAGE_KEY = 'bharat_mitra_v2_messages';
-const LANG_KEY = 'bharat_mitra_v2_lang';
+const STORAGE_KEY = 'bharat_mitra_v4_messages';
+const LANG_KEY = 'bharat_mitra_v4_lang';
 
 const App: React.FC = () => {
-  // Persistence Initialization
   const [messages, setMessages] = useState<Message[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     return saved ? JSON.parse(saved) : [
       {
         id: '1',
-        text: '### Welcome to Bharat-Mitra Professional\nI am your **Academic Assistant** for CLIL. I can provide detailed guidance on subjects in your preferred language.\n\nChoose a topic below or ask any question.',
+        text: '### Welcome to Bharat-Mitra Regional AI\nUniversal multi-lingual assistant for regional intelligence. Please choose a language or start typing.',
         sender: 'bot',
         language: 'en'
       }
@@ -45,8 +44,14 @@ const App: React.FC = () => {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [activeLang, setActiveLang] = useState<Exclude<Language, 'auto'>>('en');
 
-  // Persistence Sync
+  useEffect(() => {
+    if (currentLang !== 'auto') {
+      setActiveLang(currentLang);
+    }
+  }, [currentLang]);
+
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
   }, [messages]);
@@ -59,9 +64,16 @@ const App: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
+  const t = uiTranslations[activeLang];
+
   const handleSend = async (textOverride?: string) => {
     const textToSend = textOverride || input;
     if (!textToSend.trim()) return;
+
+    const detected = detectLanguage(textToSend);
+    if (currentLang === 'auto') {
+      setActiveLang(detected);
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -74,8 +86,7 @@ const App: React.FC = () => {
     setIsTyping(true);
 
     setTimeout(() => {
-      const detectedLang = detectLanguage(textToSend);
-      const finalLang = currentLang === 'auto' ? detectedLang : (currentLang as Exclude<Language, 'auto'>);
+      const finalLang = currentLang === 'auto' ? detected : (currentLang as Exclude<Language, 'auto'>);
       const botResponseText = getResponse(textToSend, finalLang);
       
       const botMessage: Message = {
@@ -91,52 +102,51 @@ const App: React.FC = () => {
   };
 
   const clearChat = () => {
-    if (window.confirm("Are you sure you want to clear this academic session?")) {
+    if (window.confirm(t.clearChat + "?")) {
       setMessages([{
         id: '1',
-        text: 'Session reset. I am ready for new queries.',
+        text: '---',
         sender: 'bot',
-        language: currentLang === 'auto' ? 'en' : (currentLang as Exclude<Language, 'auto'>)
+        language: activeLang
       }]);
     }
   };
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
-    // Simple toast could be added here
   };
 
   return (
     <div className="app-shell">
-      {/* PROFESSIONAL SIDEBAR */}
+      {/* PROFESSIONAL REGIONAL SIDEBAR */}
       <aside className="sidebar" style={{ width: sidebarOpen ? 'var(--sidebar-width)' : '0', padding: sidebarOpen ? '24px' : '0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
           <div style={{ background: 'var(--accent-blue)', padding: '8px', borderRadius: '10px' }}>
-            <GraduationCap size={24} color="black" />
+            <Cpu size={24} color="black" />
           </div>
-          <h2 style={{ fontSize: '1.2rem', margin: 0 }}>CLIL Portal</h2>
+          <h2 style={{ fontSize: '1.2rem', margin: 0 }}>{t.sidebarTitle}</h2>
         </div>
 
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
           <div className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px' }}>
-            <BookOpen size={16} /> Research Files
+            <Languages size={16} /> {t.sidebarResource1}
           </div>
           <div className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px' }}>
-            <Layout size={16} /> Subject Taxonomy
+            <Book size={16} /> {t.sidebarResource2}
           </div>
           <div className="chip" style={{ justifyContent: 'flex-start', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px' }}>
-            <Info size={16} /> Assignment Guide
+            <Zap size={16} /> {t.sidebarResource3}
           </div>
         </nav>
 
         <div style={{ padding: '16px', borderRadius: '12px', background: 'rgba(56,189,248,0.05)', marginTop: '20px' }}>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-            System identifies and translates content across 5 regional languages.
+            {t.summary}
           </p>
         </div>
       </aside>
 
-      {/* MAIN CHAT AREA */}
+      {/* MAIN REGIONAL CONTENT */}
       <div className="main-content">
         <header className="input-header" style={{ borderBottom: '1px solid var(--border-light)', background: 'var(--bg-dark)' }}>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="btn-icon">
@@ -144,7 +154,8 @@ const App: React.FC = () => {
           </button>
           
           <div style={{ flex: 1 }}>
-            <h1 className="gradient-text" style={{ fontSize: '1.2rem', marginBottom: 0 }}>Bharat-Mitra <span style={{ fontSize: '0.7rem', opacity: 0.6, verticalAlign: 'middle' }}>V2.0 PRO</span></h1>
+            <h1 className="gradient-text" style={{ fontSize: '1.2rem', marginBottom: 0 }}>{t.title} <span style={{ fontSize: '0.7rem', opacity: 0.6, verticalAlign: 'middle' }}>V4.0 PRO</span></h1>
+            <p style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.subtitle}</p>
           </div>
 
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -152,7 +163,7 @@ const App: React.FC = () => {
               <button 
                 onClick={() => setShowLangMenu(!showLangMenu)}
                 className="chip"
-                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', borderColor: currentLang !== 'auto' ? 'var(--accent-blue)' : 'var(--border-light)' }}
               >
                 <Globe size={14} />
                 {langLabels[currentLang]}
@@ -194,7 +205,7 @@ const App: React.FC = () => {
                 )}
                 <div className={`bubble ${msg.sender}`}>
                   {msg.sender === 'bot' && msg.language && (
-                    <span className="lang-indicator">{msg.language} intelligence</span>
+                    <span className="lang-indicator">{uiTranslations[msg.language].intelligence}</span>
                   )}
                   <div className="markdown-content">
                     <ReactMarkdown>{msg.text}</ReactMarkdown>
@@ -202,6 +213,7 @@ const App: React.FC = () => {
                   {msg.sender === 'bot' && (
                     <button 
                       onClick={() => copyToClipboard(msg.text)} 
+                      title={t.copy}
                       style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', position: 'absolute', bottom: '8px', right: '8px', opacity: 0.5 }}
                     >
                       <Copy size={12} />
@@ -217,10 +229,13 @@ const App: React.FC = () => {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="message-row bot">
                 <div className="avatar"><Bot size={18} color="var(--accent-blue)" /></div>
                 <div className="bubble bot" style={{ padding: '12px 20px' }}>
-                  <div style={{ display: 'flex', gap: '4px' }}>
-                    <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
-                    <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
-                    <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ display: 'flex', gap: '4px' }}>
+                      <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                      <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                      <motion.div animate={{ scale: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                    </div>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{t.typing}</span>
                   </div>
                 </div>
               </motion.div>
@@ -230,9 +245,8 @@ const App: React.FC = () => {
         </section>
 
         <div className="input-container-v2">
-          {/* SUGGESTED CHIPS */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' }}>
-            {getSuggestedQuestions(currentLang === 'auto' ? 'en' : currentLang).map((q, i) => (
+            {getSuggestedQuestions(currentLang === 'auto' ? activeLang : currentLang).map((q, i) => (
               <button key={i} onClick={() => handleSend(q)} className="chip">{q}</button>
             ))}
           </div>
@@ -244,7 +258,7 @@ const App: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="Ask an academic question..."
+              placeholder={t.placeholder}
               className="input-field"
             />
             <button onClick={() => handleSend()} className="btn-icon btn-send">
@@ -253,7 +267,7 @@ const App: React.FC = () => {
           </div>
           
           <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '0.65rem', color: 'var(--text-secondary)', letterSpacing: '0.5px' }}>
-            ACADEMIC AI ASSISTANT | TECHNOLOGY FOR INNOVATIVE CLIL ASSIGNMENT
+            UNIVERSAL REGIONAL AI | BHARAT-MITRA V4.0
           </div>
         </div>
       </div>

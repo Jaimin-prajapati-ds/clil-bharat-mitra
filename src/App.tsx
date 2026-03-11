@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Send, User, Globe, Trash2, 
-  MessageSquare, Copy, ChevronLeft, ChevronRight, 
-  Compass, Heart, Info, Star, MapPin
+  MessageSquare, Copy, ChevronRight, 
+  Compass, Info, Star, MapPin
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';

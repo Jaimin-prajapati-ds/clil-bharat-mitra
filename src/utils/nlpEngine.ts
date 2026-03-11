@@ -1,5 +1,5 @@
 /**
- * Bharat-Mitra NLP Engine - Enhanced Knowledge Base
+ * Bharat-Mitra NLP Engine - Multi-lingual Academic Knowledge Base
  */
 
 export type Language = 'hi' | 'gu' | 'mr' | 'ta' | 'en' | 'auto';

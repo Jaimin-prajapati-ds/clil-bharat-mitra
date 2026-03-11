@@ -256,7 +256,7 @@ const App: React.FC = () => {
 
       <div style={{ textAlign: 'center', fontSize: '0.7rem', color: 'var(--text-secondary)', padding: '8px' }}>
         <Sparkles size={10} style={{ marginRight: '4px' }} />
-        Innovative CLIL Assignment Portfolio • Bharat-Mitra
+        Innovative CLIL Assistant Portfolio | Bharat-Mitra
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, Bot, User, Globe, Sparkles } from 'lucide-react';
+import { Send, Bot, User, Globe, Sparkles, Trash2, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { detectLanguage, getResponse } from './utils/nlpEngine';
+import { detectLanguage, getResponse, getSuggestedQuestions } from './utils/nlpEngine';
 
 interface Message {
   id: string;
@@ -14,13 +14,14 @@ const App: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Namaste! Bharat-Mitra is here. How can I help you with your studies today? (Aap kis bhasha mein baat karna chahenge?)',
+      text: 'Namaste! Bharat-Mitra is here. How can I help you with your studies today? (Science, Math, History?)',
       sender: 'bot',
       language: 'en'
     }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [currentLang, setCurrentLang] = useState<'hi' | 'gu' | 'mr' | 'ta' | 'en'>('en');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -31,12 +32,13 @@ const App: React.FC = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
+  const handleSend = async (textOverride?: string) => {
+    const textToSend = textOverride || input;
+    if (!textToSend.trim()) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: input,
+      text: textToSend,
       sender: 'user',
     };
 
@@ -44,10 +46,10 @@ const App: React.FC = () => {
     setInput('');
     setIsTyping(true);
 
-    // AI Simulation / NLP Engine call
     setTimeout(() => {
-      const language = detectLanguage(input);
-      const botResponseText = getResponse(input, language);
+      const language = detectLanguage(textToSend);
+      setCurrentLang(language);
+      const botResponseText = getResponse(textToSend, language);
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -58,20 +60,40 @@ const App: React.FC = () => {
 
       setMessages(prev => [...prev, botMessage]);
       setIsTyping(false);
-    }, 1200);
+    }, 1000);
+  };
+
+  const clearChat = () => {
+    setMessages([{
+      id: '1',
+      text: 'Chat cleared. How can I help you now?',
+      sender: 'bot',
+      language: 'en'
+    }]);
   };
 
   return (
     <div className="chat-container">
       <header className="chat-header glass-panel">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-          <div className="glass-panel" style={{ padding: '10px', borderRadius: '15px' }}>
-            <Bot size={32} className="gradient-text" style={{ color: '#3b82f6' }} />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div className="glass-panel" style={{ padding: '8px', borderRadius: '12px' }}>
+              <Bot size={28} color="#3b82f6" />
+            </div>
+            <div style={{ textAlign: 'left' }}>
+              <h1 className="gradient-text" style={{ fontSize: '1.5rem', margin: 0 }}>Bharat-Mitra</h1>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Innovative CLIL Assistant</p>
+            </div>
           </div>
-          <div style={{ textAlign: 'left' }}>
-            <h1 className="gradient-text" style={{ fontSize: '1.8rem', margin: 0 }}>Bharat-Mitra</h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Innovative CLIL Regional Assistant</p>
-          </div>
+          <button onClick={clearChat} className="glass-panel" style={{ 
+            background: 'transparent', 
+            border: 'none', 
+            padding: '8px', 
+            cursor: 'pointer',
+            color: 'var(--text-secondary)'
+          }}>
+            <Trash2 size={18} />
+          </button>
         </div>
       </header>
 
@@ -80,17 +102,17 @@ const App: React.FC = () => {
           {messages.map((msg) => (
             <motion.div
               key={msg.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               className={`message-bubble ${msg.sender}`}
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <div style={{ 
                   background: msg.sender === 'bot' ? 'rgba(59, 130, 246, 0.1)' : 'rgba(139, 92, 246, 0.1)',
-                  padding: '8px',
-                  borderRadius: '10px'
+                  padding: '6px',
+                  borderRadius: '8px'
                 }}>
-                  {msg.sender === 'bot' ? <Bot size={18} color="#3b82f6" /> : <User size={18} color="#8b5cf6" />}
+                  {msg.sender === 'bot' ? <Bot size={16} color="#3b82f6" /> : <User size={16} color="#8b5cf6" />}
                 </div>
                 <div>
                   {msg.language && (
@@ -99,17 +121,13 @@ const App: React.FC = () => {
                       {msg.language.toUpperCase()}
                     </span>
                   )}
-                  <p style={{ fontSize: '1rem', fontWeight: 400 }}>{msg.text}</p>
+                  <p style={{ fontSize: '0.95rem' }}>{msg.text}</p>
                 </div>
               </div>
             </motion.div>
           ))}
           {isTyping && (
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              className="message-bubble bot"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="message-bubble bot">
               <div className="typing-indicator">
                 <div className="dot"></div>
                 <div className="dot"></div>
@@ -121,13 +139,37 @@ const App: React.FC = () => {
         <div ref={messagesEndRef} />
       </main>
 
-      <footer className="input-area glass-panel">
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '0 10px' }}>
+        {getSuggestedQuestions(currentLang).map((q, i) => (
+          <motion.button
+            key={i}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => handleSend(q)}
+            className="glass-panel"
+            style={{ 
+              padding: '6px 12px', 
+              fontSize: '0.8rem', 
+              cursor: 'pointer', 
+              color: 'var(--text-primary)',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid var(--glass-border)',
+              borderRadius: '15px'
+            }}
+          >
+            <MessageSquare size={12} style={{ marginRight: '6px', display: 'inline' }} />
+            {q}
+          </motion.button>
+        ))}
+      </div>
+
+      <footer className="input-area glass-panel" style={{ marginTop: '10px' }}>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-          placeholder="Type your question in Hindi, Gujarati, Tamil, etc..."
+          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          placeholder="Ask in Hindi, Gujarati, Tamil..."
           style={{
             flex: 1,
             background: 'transparent',
@@ -138,24 +180,14 @@ const App: React.FC = () => {
             padding: '10px'
           }}
         />
-        <button onClick={handleSend} className="btn-primary">
+        <button onClick={() => handleSend()} className="btn-primary" style={{ padding: '10px 18px' }}>
           <Send size={18} />
-          <span>Send</span>
         </button>
       </footer>
 
-      <div style={{ 
-        textAlign: 'center', 
-        fontSize: '0.8rem', 
-        color: 'var(--text-secondary)', 
-        padding: '10px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '6px'
-      }}>
-        <Sparkles size={12} />
-        Built with Power for Innovative CLIL Assignment
+      <div style={{ textAlign: 'center', fontSize: '0.7rem', color: 'var(--text-secondary)', padding: '8px' }}>
+        <Sparkles size={10} style={{ marginRight: '4px' }} />
+        Innovative CLIL Assignment Portfolio • Bharat-Mitra
       </div>
     </div>
   );
